@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.card-body{
+    background-color: #fad8a4 !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #82060b !important;
+    border-color: #0000 !important;
+    border-radius: 1.5rem !important;
+
+}

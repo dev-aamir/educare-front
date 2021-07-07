@@ -11,49 +11,53 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                     <h3 class="register-heading">Sign up to start learning</h3>
+                    <form (ngSubmit)="createAccount()">
                     <div class="row register-form">
+                        
                         <div class="col-md-6">
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <input type="text" class="form-control" placeholder="First Name *" value="" />
+                                <input type="text" class="form-control" placeholder="First Name *"  name="firstName" [(ngModel)]="student.studentFirstName" value="" />
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <input type="text" class="form-control" placeholder="Last Name *" value="" />
+                                <input type="text" class="form-control" placeholder="Last Name *" name="lastName" [(ngModel)]="student.studentLastName" value="" />
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <input type="password" class="form-control" placeholder="Password *" value="" />
+                                <input type="password" class="form-control" placeholder="Password *" name="password" [(ngModel)]="student.studentPassword" value="" />
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;"> 
-                                <input type="password" class="form-control"  placeholder="Confirm Password *" value="" />
+                                <input type="text" class="form-control"  placeholder="Username *" name="username" [(ngModel)]="student.studentUsername" value="" />
                             </div>
                             
                         </div>
                         <div class="col-md-6">
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <input type="email" class="form-control" placeholder="Your Email *" value="" />
+                                <input type="email" class="form-control" placeholder="Your Email *" name="email" [(ngModel)]="student.studentEmail" value="" />
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" value="" />
+                                <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *"  name="phone" [(ngModel)]="student.studentMobile" value="" />
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <select class="form-control">
-                                    <option class="hidden"  selected disabled>Select Gender</option>
-                                    <option>Male</option>
-                                    <option>Female</option>
+                                <select class="form-control" name="gender" [(ngModel)]="student.studentGender" >
+                                    <option class="hidden"  value="" selected disabled>Select Gender</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
                                     
                                 </select>
                             </div>
                             <div class="form-group" style="margin-bottom: 5px;">
-                                <select class="form-control">
-                                    <option class="hidden"  selected disabled>Select Standard</option>
-                                    <option>VIII</option>
-                                    <option>IX</option>
-                                    <option>X</option>
+                                <select class="form-control" name="std" [(ngModel)]="student.studentStandard">
+                                    <option class="hidden" value=""  selected disabled>Select Standard</option>
+                                    <option value="8">VIII</option>
+                                    <option value="9">IX</option>
+                                    <option value="10">X</option>
                                     
                                 </select>
                             </div>
                             <input type="submit" class="btnRegister"  value="Register"/>
                         </div>
+                       
                     </div>
+                    </form>
                 </div>
                 
             </div>
