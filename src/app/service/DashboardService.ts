@@ -22,5 +22,9 @@ export class DashboardService {
   purchaseCourse(scm : Object): Observable<any> {
     return this.http.post(`${this.baseUrl}/purchaseCourse`,scm);
   }
+
+  getPlaylist(course: Object): Observable<any> {
+    return this.http.post(`${this.baseUrl}/playlist`,course);
+  }
   
 }

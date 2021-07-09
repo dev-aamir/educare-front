@@ -6,7 +6,7 @@
         
         <div class="col-sm-8 text-left"> 
           <br>
-          <h2>Physics - Lecture 1</h2>
+          <span><h2>{{playVideoName}}</h2> </span>
           <hr>
           <div>
             <video
@@ -28,8 +28,8 @@
         </div>  
         <hr>
         <a href="#" class="btn btn-info btn-lg" role="button"><i class="bi bi-file-earmark-pdf"></i> <br/>Download Notes</a> 
-        <p style="display: inline; margin-left: 25px">
-            This is some desc about video and notes available
+        <p style="display: inline; margin-left: 25px" id="play-desc">
+            {{descText}}
         </p>
         <br>
         
@@ -37,10 +37,10 @@
         <div class="col-sm-4 sidenav overflow-auto" style="margin-top:6%;">
 
             <ul class="list-unstyled video-list-thumbs row" style="display: block; margin-left: 75px;">
-                <li *ngFor="let number of [1,2,3,4,5]; let i = index" class="col-lg-3 col-sm-4 col-xs-6">
-                    <a (click)="playVideo(i+1)" title="english">
-                        <img src="/assets/playlist/videosnap{{i+1}}.jpeg" alt="Barca" class="img-responsive" height="130px" width="240px" />
-                        <h2>English - Lecture {{i+1}}, SSC 2021 : By Prof Ajaj Khan</h2>
+                <li *ngFor="let play of playlist" class="col-lg-3 col-sm-4 col-xs-6">
+                    <a (click)="playVideo(play)" title="english">
+                        <img src={{play.playlistSnapUrl}} alt="Barca" class="img-responsive" height="130px" width="240px" />
+                        <h2>{{play.playlistName}} : By Prof Ajaj Khan</h2>
                         <i class="bi bi-play-circle-fill"></i>
                         <span class="duration">03:15</span>
                     </a>
@@ -59,46 +59,29 @@
       <div class="card-body">
           <!-- Comment form-->
           <form class="mb-4">
-            <textarea class="form-control" rows="3" placeholder="Ask your doubt here!" style="margin-bottom: 1%;"></textarea>
-            <button type="submit" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
+            <textarea class="form-control" name="doubt" [(ngModel)]="question" rows="3" placeholder="Ask your doubt here!" style="margin-bottom: 1%;"></textarea>
+            <button (click)="askDoubt()" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
           </form>
           <!-- Comment with nested comments-->
-          <div class="d-flex mb-4">
+          <div class="d-flex mb-4" *ngFor="let doubt of doubtList">
               <!-- Parent comment-->
               <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
               <div class="ms-3">
-                  <div class="fw-bold">Student Name</div>
-                  If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                  <div class="fw-bold">You : </div>
+                 {{doubt.quest}}
                   <!-- Child comment 1-->
                   <div class="d-flex mt-4">
                       <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                       <div class="ms-3">
-                          <div class="fw-bold">Teacher</div>
-                          And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                      </div>
+                          <div class="fw-bold">Teacher : </div>
+                          {{doubt.answer}}  
+                        </div>
                   </div>
                  
               </div>
               
           </div>
-          <div class="d-flex mb-4">
-            <!-- Parent comment-->
-            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-            <div class="ms-3">
-                <div class="fw-bold">Student Name</div>
-                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
-                <!-- Child comment 1-->
-                <div class="d-flex mt-4">
-                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                    <div class="ms-3">
-                        <div class="fw-bold">Teacher</div>
-                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
-                    </div>
-                </div>
-               
-            </div>
-            
-        </div>
+          
          
       </div>
   </div>
