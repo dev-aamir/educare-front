@@ -1,0 +1,51 @@
+<style>
+    .btn-primary {
+      color: #fff !important;
+      background-color: #4472b7 !important;
+      border-color: #0d6efd !important;
+  }
+  
+  </style>
+<br><br>
+<div class="row" style="margin-left: 10px;">
+    
+    <div class="col-sm-3" *ngFor="let course of courseList | async">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="{{course.courseSnap}}" alt="Card image cap" width="250" height="150">
+            <div class="card-body">
+              <h5 class="card-title">{{course.courseName}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a (click)="buyCourse($event)" class="btn btn-primary" id="{{course.courseId}}">Buy Course</a> 
+              <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_HWIm5mP8ga6csy" async> </script> </form>
+            </div>
+          </div>
+    </div>
+
+    <!--
+    <div class="col-sm-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/assets/chem.jpeg" alt="Card image cap" width="250" height="150">
+            <div class="card-body">
+              <h5 class="card-title">Chemistry</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="myboard" class="btn btn-primary">Buy Course</a>
+            </div>
+          </div>
+    </div>
+
+    
+    <div class="col-sm-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="/assets/math.jpeg" alt="Card image cap" width="250" height="150">
+            <div class="card-body">
+              <h5 class="card-title">Maths</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="myboard" class="btn btn-primary">Buy Course</a>
+            </div>
+          </div>
+    </div>
+
+  -->
+
+  
+</div>

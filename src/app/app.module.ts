@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MyboardComponent } from './myboard/myboard.component';
 import { PlaylistComponent } from './playlist/playlist.component';
+import { StateService } from './service/StateService';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
     DashboardComponent,
     ProfileComponent,
     MyboardComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +35,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [StateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files 
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
 .card-body{
     background-color: #fad8a4 !important;
 }
@@ -10,3 +12,4 @@
     border-radius: 1.5rem !important;
 
 }
+*/

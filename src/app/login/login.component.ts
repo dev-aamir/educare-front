@@ -12,6 +12,7 @@ import { StudentService } from '../service/StudentService';
 export class LoginComponent implements OnInit {
 
   student: Student = new Student();
+  error : Boolean;
   
   constructor(private studentService : StudentService, private router : Router,
         private studentState : StateService) { }
@@ -20,13 +21,21 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick(){
-    this.loginServiceCall();
+    if(this.student.studentUsername == null || this.student.studentPassword == null){
+      this.error = true;
+    }else{
+      this.loginServiceCall();
+    }
+    
   }
 
   loginServiceCall(){
     this.studentService.login(this.student)
       .subscribe(data =>{
         console.log(data);
+        if(data == null){
+          this.error = true;
+        }
         if(data.studentId > 0){
           this.studentState.setStudentState(data);
         

@@ -1,117 +1,105 @@
 
-<!--
-<div class="container">
-
-<div>
-    <h3>Physics</h3>
-</div>
-
-<ul class="list-unstyled video-list-thumbs row" style="display: block;">
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="glyphicon glyphicon-play-circle"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="glyphicon glyphicon-play-circle"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="glyphicon glyphicon-play-circle"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-	<li class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="glyphicon glyphicon-play-circle"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-    <li class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-		<a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-			<img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-			<h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-			<span class="glyphicon glyphicon-play-circle"></span>
-			<span class="duration">03:15</span>
-		</a>
-	</li>
-</ul>
-
-</div>
-
--->
-
-
-
-<div class="container-fluid">    
-  <div class="row content">
+<section class="py-5">
+  <div class="container px-5">
     
-    <div class="col-sm-8 text-left"> 
-      <br>
-      <h2>English - Lecture 1</h2>
-      <hr>
+      <div class="row content" style="margin-top: -6%;">
+        
+        <div class="col-sm-8 text-left"> 
+          <br>
+          <h2>Physics - Lecture 1</h2>
+          <hr>
+          <div>
+            <video
+                id="my-player"
+                class="video-js"
+                controls
+                preload="auto"
+                poster="//vjs.zencdn.net/v/oceans.png"
+                data-setup='{}'>
+            <source src="/assets/playlist/video1.mp4" type="video/mp4" />
+            <p class="vjs-no-js">
+                To view this video please enable JavaScript, and consider upgrading to a
+                web browser that
+                <a href="https://videojs.com/html5-video-support/" target="_blank">
+                supports HTML5 video
+                </a>
+            </p>
+            </video>
+        </div>  
+        <hr>
+        <a href="#" class="btn btn-info btn-lg" role="button"><i class="bi bi-file-earmark-pdf"></i> <br/>Download Notes</a> 
+        <p style="display: inline; margin-left: 25px">
+            This is some desc about video and notes available
+        </p>
+        <br>
+        
+        </div>
+        <div class="col-sm-4 sidenav overflow-auto" style="margin-top:6%;">
+
+            <ul class="list-unstyled video-list-thumbs row" style="display: block; margin-left: 75px;">
+                <li *ngFor="let number of [1,2,3,4,5]; let i = index" class="col-lg-3 col-sm-4 col-xs-6">
+                    <a (click)="playVideo(i+1)" title="english">
+                        <img src="/assets/playlist/videosnap{{i+1}}.jpeg" alt="Barca" class="img-responsive" height="130px" width="240px" />
+                        <h2>English - Lecture {{i+1}}, SSC 2021 : By Prof Ajaj Khan</h2>
+                        <i class="bi bi-play-circle-fill"></i>
+                        <span class="duration">03:15</span>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
       
-      <div class="embed-responsive embed-responsive-16by9" style="height: 100%;">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/NNamZZsggM4" style="width: 100%; height: 110%;" allowfullscreen></iframe>
+
       </div>
-    </div>
-    <div class="col-sm-4 sidenav">
-
-        <ul class="list-unstyled video-list-thumbs row" style="display: block; margin-top: 20px;">
-            <li class="col-lg-3 col-sm-4 col-xs-6">
-                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-                    <h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-                    <span class="glyphicon glyphicon-play-circle"></span>
-                    <span class="duration">03:15</span>
-                </a>
-            </li>
-            <li class="col-lg-3 col-sm-4 col-xs-6">
-                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-                    <h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-                    <span class="glyphicon glyphicon-play-circle"></span>
-                    <span class="duration">03:15</span>
-                </a>
-            </li>
-            <li class="col-lg-3 col-sm-4 col-xs-6">
-                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-                    <h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-                    <span class="glyphicon glyphicon-play-circle"></span>
-                    <span class="duration">03:15</span>
-                </a>
-            </li>
-            <li class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-                    <h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-                    <span class="glyphicon glyphicon-play-circle"></span>
-                    <span class="duration">03:15</span>
-                </a>
-            </li>
-            <li class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
-                <a href="#" title="Claudio Bravo, antes su debut con el Barça en la Liga">
-                    <img src="http://i.ytimg.com/vi/ZKOtE9DOwGE/mqdefault.jpg" alt="Barca" class="img-responsive" height="130px" />
-                    <h2>Claudio Bravo, antes su debut con el Barça en la Liga</h2>
-                    <span class="glyphicon glyphicon-play-circle"></span>
-                    <span class="duration">03:15</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+   
   </div>
-</div>
-
+</section>
+<section style="width: 65%; margin: 5% 0% 5% 5%;">
+  <div class="card bg-light">
+      <div class="card-body">
+          <!-- Comment form-->
+          <form class="mb-4">
+            <textarea class="form-control" rows="3" placeholder="Ask your doubt here!" style="margin-bottom: 1%;"></textarea>
+            <button type="submit" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
+          </form>
+          <!-- Comment with nested comments-->
+          <div class="d-flex mb-4">
+              <!-- Parent comment-->
+              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+              <div class="ms-3">
+                  <div class="fw-bold">Student Name</div>
+                  If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                  <!-- Child comment 1-->
+                  <div class="d-flex mt-4">
+                      <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                      <div class="ms-3">
+                          <div class="fw-bold">Teacher</div>
+                          And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                      </div>
+                  </div>
+                 
+              </div>
+              
+          </div>
+          <div class="d-flex mb-4">
+            <!-- Parent comment-->
+            <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+            <div class="ms-3">
+                <div class="fw-bold">Student Name</div>
+                If you're going to lead a space frontier, it has to be government; it'll never be private enterprise. Because the space frontier is dangerous, and it's expensive, and it has unquantified risks.
+                <!-- Child comment 1-->
+                <div class="d-flex mt-4">
+                    <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                    <div class="ms-3">
+                        <div class="fw-bold">Teacher</div>
+                        And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                    </div>
+                </div>
+               
+            </div>
+            
+        </div>
+         
+      </div>
+  </div>
+</section>

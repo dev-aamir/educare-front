@@ -25,7 +25,7 @@
 	height: 33px;
 	margin: 8px 0 0;
 }
-.video-list-thumbs .glyphicon-play-circle{
+.video-list-thumbs .bi-play-circle-fill{
     font-size: 60px;
     opacity: 0.6;
     position: absolute;
@@ -34,7 +34,7 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.5);
     transition:all 500ms ease-in-out;
 }
-.video-list-thumbs > li > a:hover .glyphicon-play-circle{
+.video-list-thumbs > li > a:hover .bi-play-circle-fill{
 	color:#fff;
 	opacity:1;
 	text-shadow:0 1px 3px rgba(0,0,0,.8);
@@ -56,7 +56,7 @@
 	background-color:#000;
 }
 @media (min-width:320px) and (max-width: 480px) { 
-	.video-list-thumbs .glyphicon-play-circle{
+	.video-list-thumbs .bi-play-circle-fill{
     font-size: 35px;
     right: 36%;
     top: 27%;
@@ -81,7 +81,6 @@
   /* Set gray background color and 100% height */
   .sidenav {
     padding-top: 20px;
-    background-color: #f1f1f1;
     height: 100%;
   }
   

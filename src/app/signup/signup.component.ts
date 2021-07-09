@@ -12,7 +12,7 @@ import { StudentService } from '../service/StudentService';
 export class SignupComponent implements OnInit {
 
   student: Student = new Student();
-  
+  error : Boolean;
   constructor(private studentService : StudentService, private router : Router,
         private studentState : StateService) { }
 
@@ -20,19 +20,29 @@ export class SignupComponent implements OnInit {
   }
 
   createAccount(){
-    this.studentService.createAccount(this.student)
+    if(this.student.studentFirstName == null || this.student.studentMobile == null 
+      || this.student.studentEmail == null 
+      || this.student.studentUsername == null || this.student.studentPassword == null){
+        this.error = true;
+      }else{
+        this.studentService.createAccount(this.student)
       .subscribe(data =>{
         console.log(data);
         if(data != null){
           this.studentState.setStudentState(data);
           console.log("success");
           this.router.navigate(['/dashboard']);
+        }else{
+          this.error = true;
         }
       },
       error =>{
+        this.error = true;
         console.log("***** Signup ERROR *****");
         console.log(error);
       })
   }
+      }
+    
 
 }
