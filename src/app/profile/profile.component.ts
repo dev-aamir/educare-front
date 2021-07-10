@@ -17,11 +17,18 @@ export class ProfileComponent implements OnInit {
     private dashStateService : StateService) { }
 
   courseList : Observable<Course[]>
-  student : Student 
+  student : Student = this.dashStateService.getStudentState();
   
   ngOnInit(): void{
-    this.student = this.dashStateService.getStudentState();
-    this.courseList = this.dashBoardService.getMyLearnings(this.student);
+
+    if(this.student == null){
+      this.router.navigateByUrl("/login");  
+    }else{
+      this.courseList = this.dashBoardService.getMyLearnings(this.student);
+    
+    }
+    
+    
   }
   
   

@@ -77,30 +77,30 @@
                 </li>
               -->
 
-                <li class="nav-item active">
-                  <a class="nav-link" href="">Home </a>
+                <li class="nav-item">
+                  <a class="nav-link"  [routerLink]="['']" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact: true}">Home </a>
                 </li>
                 <li class="nav-item" *ngIf="student == null">
-                  <a class="nav-link" href="contact">Contact</a>
+                  <a class="nav-link" [routerLink]="['contact']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Contact</a>
                 </li>
                 <li class="nav-item" *ngIf="student == null">
-                  <a class="nav-link" href="about">About</a>
+                  <a class="nav-link" [routerLink]="['about']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">About</a>
                 </li>
                 <li class="nav-item" *ngIf="student == null">
-                  <a class="nav-link" href="signup">Sign up</a>
+                  <a class="nav-link" [routerLink]="['signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Sign up</a>
                 </li>
                 <li class="nav-item" *ngIf="student != null">
-                  <a class="nav-link" href="dashboard">Courses</a>
+                  <a class="nav-link" [routerLink]="['dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Courses</a>
                 </li>
                 <li class="nav-item" *ngIf="student != null">
-                  <a class="nav-link" href="myboard">My Learning</a>
+                  <a class="nav-link" [routerLink]="['myboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Learning</a>
                 </li>
                 <li class="nav-item" *ngIf="student != null">
-                  <a class="nav-link" href="profile">My Profile</a>
+                  <a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Profile</a>
                 </li>
               
                 <li class="nav-item" *ngIf="student == null">
-                  <a class="nav-link" href="login">Login</a>
+                  <a class="nav-link" [routerLink]="['login']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Login</a>
                 </li>
                 <li class="nav-item" *ngIf="student != null">
                   <a class="nav-link" (click)="logout()">Logout</a>

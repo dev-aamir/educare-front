@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Student } from '../model/student';
 import { StateService } from '../service/StateService';
 import { StudentService } from '../service/StudentService';
+//import { AlertService } from '../_alert/alert.service';
+
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,11 @@ export class LoginComponent implements OnInit {
 
   student: Student = new Student();
   error : Boolean;
+
+  options = {
+    autoClose: true,
+    keepAfterRouteChange: false
+  };
   
   constructor(private studentService : StudentService, private router : Router,
         private studentState : StateService) { }
@@ -36,10 +43,10 @@ export class LoginComponent implements OnInit {
         if(data == null){
           this.error = true;
         }
-        if(data.studentId > 0){
+        else{
           this.studentState.setStudentState(data);
         
-          this.router.navigate(['/dashboard']);
+          this.router.navigateByUrl("/dashboard");
         }
       },
       error =>{

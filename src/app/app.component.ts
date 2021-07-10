@@ -20,6 +20,7 @@ export class AppComponent{
   logout(){
     this.student = null;
     this.studentState.setStudentState(null);
+    localStorage.removeItem('student');
     this.router.navigate(['/login']);
   }  
 }

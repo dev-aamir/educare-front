@@ -1,40 +1,83 @@
 
 <section class="py-5">
   <div class="container px-5">
-    
-      <div class="row content" style="margin-top: -6%;">
+        <div class="row">
+            <div class="col-sm-12">
+                <br>
+                <span><h2>{{playVideoName}}</h2> </span>
+                <hr>
+                <div>
+                  <video
+                      id="my-player"
+                      class="video-js"
+                      controls
+                      preload="auto"
+                      poster="//vjs.zencdn.net/v/oceans.png"
+                      data-setup='{}'>
+                  <source src="/assets/playlist/video1.mp4" type="video/mp4" />
+                  <p class="vjs-no-js">
+                      To view this video please enable JavaScript, and consider upgrading to a
+                      web browser that
+                      <a href="https://videojs.com/html5-video-support/" target="_blank">
+                      supports HTML5 video
+                      </a>
+                  </p>
+                  </video>
+              </div>  
+              <hr>
+             
+            
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <a href="#" class="btn btn-info btn-lg" role="button"><i class="bi bi-file-earmark-pdf"></i> <br/>Download Notes</a>    
+            </div>
+            <div class="col-sm-10">
+                <p id="play-desc">
+                    {{descText}}. HelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHelloHello
+                </p>
+            </div>
+            
+           
+        </div>
+      <div class="row content" >
         
         <div class="col-sm-8 text-left"> 
-          <br>
-          <span><h2>{{playVideoName}}</h2> </span>
-          <hr>
-          <div>
-            <video
-                id="my-player"
-                class="video-js"
-                controls
-                preload="auto"
-                poster="//vjs.zencdn.net/v/oceans.png"
-                data-setup='{}'>
-            <source src="/assets/playlist/video1.mp4" type="video/mp4" />
-            <p class="vjs-no-js">
-                To view this video please enable JavaScript, and consider upgrading to a
-                web browser that
-                <a href="https://videojs.com/html5-video-support/" target="_blank">
-                supports HTML5 video
-                </a>
-            </p>
-            </video>
-        </div>  
-        <hr>
-        <a href="#" class="btn btn-info btn-lg" role="button"><i class="bi bi-file-earmark-pdf"></i> <br/>Download Notes</a> 
-        <p style="display: inline; margin-left: 25px" id="play-desc">
-            {{descText}}
-        </p>
-        <br>
+            <div class="card bg-light" style="margin-top: 20px; overflow: scroll; height: 450px;">
+                <div class="card-body">
+                    <!-- Comment form-->
+                    <form class="mb-4">
+                      <textarea class="form-control" name="doubt" [(ngModel)]="question" rows="3" placeholder="Ask your doubt here!" style="margin-bottom: 1%;"></textarea>
+                      <button (click)="askDoubt()" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
+                    </form>
+                    <!-- Comment with nested comments-->
+                    <div class="d-flex mb-4" *ngFor="let doubt of doubtList">
+                        <!-- Parent comment-->
+                        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                        <div class="ms-3">
+                            <div class="fw-bold">You : </div>
+                           {{doubt.quest}}
+                            <!-- Child comment 1-->
+                            <div class="d-flex mt-4">
+                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                                <div class="ms-3">
+                                    <div class="fw-bold">Teacher : </div>
+                                    {{doubt.answer}}  
+                                  </div>
+                            </div>
+                           
+                        </div>
+                        
+                    </div>
+                    
+                   
+                </div>
+            </div>
         
         </div>
-        <div class="col-sm-4 sidenav overflow-auto" style="margin-top:6%;">
+        <div class="col-sm-4 sidenav overflow-auto">
 
             <ul class="list-unstyled video-list-thumbs row" style="display: block; margin-left: 75px;">
                 <li *ngFor="let play of playlist" class="col-lg-3 col-sm-4 col-xs-6">
@@ -54,35 +97,4 @@
    
   </div>
 </section>
-<section style="width: 65%; margin: 5% 0% 5% 5%;">
-  <div class="card bg-light">
-      <div class="card-body">
-          <!-- Comment form-->
-          <form class="mb-4">
-            <textarea class="form-control" name="doubt" [(ngModel)]="question" rows="3" placeholder="Ask your doubt here!" style="margin-bottom: 1%;"></textarea>
-            <button (click)="askDoubt()" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
-          </form>
-          <!-- Comment with nested comments-->
-          <div class="d-flex mb-4" *ngFor="let doubt of doubtList">
-              <!-- Parent comment-->
-              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-              <div class="ms-3">
-                  <div class="fw-bold">You : </div>
-                 {{doubt.quest}}
-                  <!-- Child comment 1-->
-                  <div class="d-flex mt-4">
-                      <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
-                      <div class="ms-3">
-                          <div class="fw-bold">Teacher : </div>
-                          {{doubt.answer}}  
-                        </div>
-                  </div>
-                 
-              </div>
-              
-          </div>
-          
-         
-      </div>
-  </div>
-</section>
+

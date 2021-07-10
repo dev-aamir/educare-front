@@ -21,7 +21,13 @@ export class MyboardComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.reloadData();
+
+    if(this.student == null){
+      this.router.navigateByUrl("/login");  
+    }else{
+      this.reloadData();
+    }
+    
   }
 
   reloadData() {

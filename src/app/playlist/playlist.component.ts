@@ -23,7 +23,13 @@ export class PlaylistComponent implements OnInit {
   playVideoName : String = "Physics - Lecture 1";
 
   ngOnInit(): void {
-    this.getPlaylist();
+
+    if(this.student == null){
+      this.router.navigateByUrl("/login");  
+    }else{
+      this.getPlaylist();
+    }
+    
   }
   
 

@@ -26,5 +26,13 @@ export class DashboardService {
   getPlaylist(course: Object): Observable<any> {
     return this.http.post(`${this.baseUrl}/playlist`,course);
   }
+
+  saveEnquiry(enquiry: Object): Observable<any> {
+    return this.http.post(`${this.baseUrl}/enquiry`,enquiry);
+  }
+
+  checkPurchaseStatus(scm: Object): Observable<any> {
+    return this.http.post(`${this.baseUrl}/purchaseStatus`,scm);
+  }
   
 }

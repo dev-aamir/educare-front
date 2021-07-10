@@ -15,6 +15,7 @@ import { MyboardComponent } from './myboard/myboard.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { StateService } from './service/StateService';
 import { AboutComponent } from './about/about.component';
+import { AlertModule } from './_alert/alert.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AboutComponent } from './about/about.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AlertModule
   ],
   providers: [StateService],
   bootstrap: [AppComponent]
