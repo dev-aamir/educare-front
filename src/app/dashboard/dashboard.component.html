@@ -2,6 +2,11 @@
             <!-- Blog preview section-->
             <section class="py-5">
                 <div class="container px-5">
+                    <div *ngIf="showLoader" class="d-flex justify-content-center">
+                        <div class="spinner-border text-primary" role="status">
+                          <span class="sr-only"></span>
+                        </div>
+                      </div>    
                     <h2 class="fw-bolder fs-5 mb-4">Featured Courses</h2>
                     <div class="alert alert-warning" role="alert" [hidden]="!error" style="text-align: center;width: 50%;
                     height: 10%;

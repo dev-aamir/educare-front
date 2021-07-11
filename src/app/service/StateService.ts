@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Student } from '../model/student';
 
 @Injectable({
@@ -19,5 +20,16 @@ export class StateService {
     return this.studentObject = JSON.parse(localStorage.getItem("student"));
   }
 
+
+  private notify = new Subject<any>();
+  
+  notifyObservable$ = this.notify.asObservable();
+
+
+  public notifyOther(data: any) {
+    if (data) {
+      this.notify.next(data);
+    }
+  }
   
 }

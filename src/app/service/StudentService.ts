@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class StudentService {
 
-  private baseUrl = 'http://localhost:9292/educare/student';
+  private baseUrl = 'http://www.dev.jvmhost.net/hayateducare-1.0/student';
 
   constructor(private http: HttpClient) { }
 

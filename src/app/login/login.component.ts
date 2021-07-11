@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { Student } from '../model/student';
 import { StateService } from '../service/StateService';
 import { StudentService } from '../service/StudentService';
-//import { AlertService } from '../_alert/alert.service';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   };
   
   constructor(private studentService : StudentService, private router : Router,
-        private studentState : StateService) { }
+        private studentState : StateService, private appComponent : AppComponent) { }
 
   ngOnInit(): void {
   }
@@ -45,8 +45,9 @@ export class LoginComponent implements OnInit {
         }
         else{
           this.studentState.setStudentState(data);
-        
-          this.router.navigateByUrl("/dashboard");
+          this.studentState.notifyOther({key: 'isLoggedIn', value: true});
+          this.router.navigateByUrl('/dashboard');
+          
         }
       },
       error =>{
@@ -54,5 +55,16 @@ export class LoginComponent implements OnInit {
         console.log(error);
       })
   }
+
+
+  reloadCurrentRoute() {
+    let currentUrl = this.router.url;
+    this.router.navigateByUrl('', {skipLocationChange: true}).then(() => {
+        this.router.navigate([currentUrl]);
+    });
+  }
+
+  
+
 
 }

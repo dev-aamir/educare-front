@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  private baseUrl = 'http://localhost:9292/educare/dashboard';
+  private baseUrl = 'http://www.dev.jvmhost.net/hayateducare-1.0/dashboard';
 
   constructor(private http: HttpClient) { }
 

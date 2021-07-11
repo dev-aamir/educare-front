@@ -7,7 +7,7 @@
                   <h1 class="display-5 fw-bolder text-white mb-2">Discover a new way of learning</h1>
                   <p class="lead fw-normal text-white-50 mb-4">We build you future right here and not just teach you but educate!</p>
                   <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
-                      <a class="btn btn-primary btn-lg px-4 me-sm-3" href="signup">Get Started</a>
+                      <a class="btn btn-primary btn-lg px-4 me-sm-3" [routerLink]="['signup']">Get Started</a>
                       
                   </div>
               </div>
@@ -115,6 +115,6 @@
                   </div>
               </div>
           </div>
-         <a href="signup">Sign up to see more --> </a>
+         <a [routerLink]="['signup']">Sign up to see more --> </a>
       </div>
   </section>
