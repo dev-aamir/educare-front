@@ -1,0 +1,55 @@
+ <!-- Page Content-->
+ <section class="py-5">
+    <div class="container px-5">
+        <h1 class="fw-bolder fs-5 mb-4">Course Details</h1>
+        <div class="card border-0 shadow rounded-3 overflow-hidden">
+            <div class="card-body p-0">
+                <div class="row gx-0">
+                    <div class="col-lg-6 col-xl-5 py-lg-5">
+                        <div class="p-4 p-md-5">
+                            
+                            <div class="h2 fw-bolder">{{courseDetails[0].cdCourseName}}</div>
+                            <p><span>{{courseDetails[0].cdCourseInfo}}</span></p>
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-7"><div class="bg-featured-blog" style="background-image: url({{courseDetails[0].cdCourseSnap}})"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-xl-8">
+                <h2 class="fw-bolder fs-5 mb-4">Syllabus</h2>
+                <!-- News item-->
+                <div class="mb-4" *ngFor="let course of courseDetails " style="overflow: auto;">
+                    <div class="small text-muted">{{course.cdCourseProfName}}</div>
+                    <h3>{{course.cdCourseChapter}}</h3>
+                    <div class="small text-muted"><span>{{course.cdCourseChapterInfo}}</span></div>
+                </div>
+              
+                
+            </div>
+            <div class="col-xl-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center">
+                                <div class="alert alert-danger" role="alert" *ngIf="error">You have already purchased this course</div>    
+                                <div class="h6 fw-bolder">Course Duration : {{courseDetails[0].cdCourseDuration}} hours</div>
+                                <div class="h6 fw-bolder">Price : Rs {{courseDetails[0].cdCoursePrice}} </div>
+                               
+                                <div class="h6 fw-bolder">Buy This Course</div>
+                                <button class="btn btn-primary" *ngIf="student == null" routerLink="/signup">Sign up to Purchase</button>
+                                <button class="btn btn-primary" *ngIf="student != null" (click)="orderCourse(courseDetails[0].cdCourseId)">Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

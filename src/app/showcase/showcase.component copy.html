@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <button class="btn btn-primary shadow verticalBtn" (click)="navigatorClick(1)"><i class="bi bi-clipboard-data"></i> Syllabus</button>
+            <button class="btn btn-secondary shadow verticalBtn" (click)="navigatorClick(2)"><i class="bi bi-clipboard-data"></i> Test Series</button>
+            <button class="btn btn-secondary shadow verticalBtn" (click)="navigatorClick(3)"><i class="bi bi-clipboard-data"></i> Lectures</button>
+        </div>
+        <div class="col-sm-9" *ngIf="displayDiv == null || displayDiv == 1">
+            <div>
+                <h2> 12th Physics Syllabus </h2>
+            </div>
+            <div class="overflow-auto" style="max-height: 500px;">
+            <div *ngFor="let i of [1,2,3,4,5,6,7,8,9,10]" class="row g-0 border rounded flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="width: max-content;"> 
+                <div class="col p-4 d-flex flex-column position-static">
+                    <div class="mb-1 text-muted">Nov 12</div>
+                    <h3 class="mb-0">Chapter </h3>
+                  
+                  <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                </div>
+                <div class="col-auto d-none d-lg-block">
+                  <svg class="bd-placeholder-img" width="150" height="150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="col-sm-9" *ngIf="displayDiv == 2">
+            <h2>Test Series</h2>
+        </div>
+        <div class="col-sm-9" *ngIf="displayDiv == 3">
+            <h2>Lectures</h2>
+        </div>
+    </div>
+</div>
