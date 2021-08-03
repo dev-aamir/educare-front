@@ -16,6 +16,12 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { StateService } from './service/StateService';
 import { AboutComponent } from './about/about.component';
 import { AlertModule } from './_alert/alert.module';
+import { DetailsComponent } from './details/details.component';
+import { NoRightClickDirective } from './no-right-click.directive';
+import { OrderComponent } from './order/order.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ShowcaseComponent } from './showcase/showcase.component';
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from  'ngx-ui-loader';
 
 @NgModule({
   declarations: [
@@ -28,16 +34,22 @@ import { AlertModule } from './_alert/alert.module';
     ProfileComponent,
     MyboardComponent,
     PlaylistComponent,
-    AboutComponent
+    AboutComponent,
+    DetailsComponent,
+    NoRightClickDirective,
+    OrderComponent,
+    ShowcaseComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AlertModule
+    AlertModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule
   ],
-  providers: [StateService],
+  providers: [StateService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

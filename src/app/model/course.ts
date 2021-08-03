@@ -8,5 +8,6 @@ export class Course {
 	coursePlayId : number;
 	courseTeacherId : number;
 	courseActive : boolean;
+	courseType : string;
 
 }

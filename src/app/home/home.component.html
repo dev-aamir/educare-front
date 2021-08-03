@@ -1,18 +1,18 @@
 <!-- Header-->
-<header class="bg-dark py-5">
+<header class="py-5" style="height: 400px;">
   <div class="container px-5">
       <div class="row gx-5 align-items-center justify-content-center">
           <div class="col-lg-8 col-xl-7 col-xxl-6">
               <div class="my-5 text-center text-xl-start">
-                  <h1 class="display-5 fw-bolder text-white mb-2">Discover a new way of learning</h1>
-                  <p class="lead fw-normal text-white-50 mb-4">We build you future right here and not just teach you but educate!</p>
+                  <h1 class="display-5 fw-bolder mb-2">Discover a new way of learning</h1>
+                  <p class="lead fw-normal mb-4">We build you future right here and not just teach you but educate!</p>
                   <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                       <a class="btn btn-primary btn-lg px-4 me-sm-3" [routerLink]="['signup']">Get Started</a>
                       
                   </div>
               </div>
           </div>
-          <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="/assets/home1.jpeg" alt="..." /></div>
+          <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="/assets/webcons/home1.png" alt="..." /></div>
       </div>
   </div>
 </header>
@@ -21,7 +21,9 @@
   <section class="py-5" id="features">
       <div class="container px-5 my-5">
           <div class="row gx-5">
-              <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start learning.</h2></div>
+              <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">A better way to start learning.</h2>
+              <img class="rounded-3" src="/assets/webcons/home2.png" style="width: 125%; margin-left: -15%"/>
+              </div>
               <div class="col-lg-8">
                   <div class="row gx-5 row-cols-1 row-cols-md-2">
                       <div class="col mb-5 h-100">
@@ -83,33 +85,57 @@
           <div class="row gx-5">
               <div class="col-lg-4 mb-5">
                   <div class="card h-100 shadow border-0">
-                    <h2 style="background-color: #287cf6; color : white; text-align : center;font-weight: bolder;"> Class 11th </h2>
+                    <img class="card-img-top" src="/assets/webcons/sci.png" alt="Card image cap">
+                   
+                    <!--<h2 style="background-color: #287cf6; color : white; text-align : center;font-weight: bolder;"> Class 11th </h2>
                       <div class="card-body p-4">
                          
-                          <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">11th Science</h5></a>
+                          <a class="text-decoration-none link-dark stretched-link" routerLink="/showcase"><h5 class="card-title mb-3">11th Science</h5></a>
                           <p class="card-text mb-0">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      </div> -->
+                      <div class="card-body p-4" style="text-align:center; margin-top: 10%;">
+                        <h5 class="card-title">Science</h5>
+                     </div>
+                     <div class="card-footer">
+                        <button class="btn btn-primary" (click)="goToShowcase('sci')">Learn More</button>
                       </div>
                      
                   </div>
               </div>
               <div class="col-lg-4 mb-5">
                   <div class="card h-100 shadow border-0">
-                    <h2 style="background-color: #287cf6; color : white; text-align : center; font-weight: bolder;"> Class 12th </h2>
-                      <div class="card-body p-4">
-                          
+                    <img class="card-img-top" src="/assets/webcons/comm.png" alt="Card image cap">
+                    <!--<h2 style="background-color: #287cf6; color : white; text-align : center; font-weight: bolder;"> Class 12th </h2>
+                    -->
+                        <div class="card-body p-4" style="text-align:center; margin-top: 10%;">
+                            <h5 class="card-title" style="margin-top: 10%;">Commerce</h5>
+                       
+                        <!--  
                           <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">12th Science</h5></a>
                           <p class="card-text mb-0">This text is a bit longer to illustrate the adaptive height of each card. Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        -->
+                       </div>
+                       <div class="card-footer">
+                        <button class="btn btn-primary" (click)="goToShowcase('com')">Learn More</button>
                       </div>
                      
                   </div>
               </div>
               <div class="col-lg-4 mb-5">
                   <div class="card h-100 shadow border-0">
-                       <h2 style="background-color: #287cf6; color : white; text-align : center; font-weight: bolder;"> 11th + 12th + JEE </h2>
-                      <div class="card-body p-4">
+                      <!-- <h2 style="background-color: #287cf6; color : white; text-align : center; font-weight: bolder;"> 11th + 12th + JEE </h2>
+                      -->
+                      <img class="card-img-top" src="/assets/webcons/comp.png" alt="Card image cap">
+                      <div class="card-body p-4" style="text-align:center; margin-top: 10%;">
                           
-                          <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">11th Science - 12th Science & JEE </h5></a>
+                      <!--    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">11th Science - 12th Science & JEE </h5></a>
                           <p class="card-text mb-0">Some more quick example text to build on the card title and make up the bulk of the card's content.</p>
+                      -->
+                      <h5 class="card-title">Competetive Exams</h5>
+                      
+                      </div>
+                      <div class="card-footer">
+                        <button class="btn btn-primary" (click)="goToShowcase('exa')">Learn More</button>
                       </div>
                       
                   </div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { CourseDetails } from '../model/courseDetails';
 import { Student } from '../model/student';
 
 @Injectable({
@@ -8,7 +9,7 @@ import { Student } from '../model/student';
 export class StateService {
 
   private studentObject : Student;
-
+  
   constructor() { }
 
   setStudentState(student : Student){
@@ -19,7 +20,6 @@ export class StateService {
   getStudentState() : Student{
     return this.studentObject = JSON.parse(localStorage.getItem("student"));
   }
-
 
   private notify = new Subject<any>();
   

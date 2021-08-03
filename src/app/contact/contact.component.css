@@ -42,3 +42,9 @@ body{
 .contact-form button:focus{
     box-shadow:none;
 }
+
+.contacticon{
+    width: 200%;
+    margin-left: -25%;
+    margin-top: 10%;
+}

@@ -12,6 +12,8 @@ export class Student {
 	studentOtp : number;
 	studentActive : boolean;
 	validationResponse : any;
+	sessionKey : string;
+	message : string;
 
 	
 }

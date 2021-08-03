@@ -70,7 +70,10 @@
 </div> -->
 
 <div class="container card-0 justify-content-center ">
-    <div class="card-body px-sm-4 px-0">
+    <div>
+        <img src="/assets/webcons/signupcon.png" style="width: 50%; float:right; margin:32% -34% -4% -4%;" />
+    </div>
+    <div class="card-body px-sm-4 px-0" style="margin-top: -9%;">
         <div class="row justify-content-center mb-5">
             <div class="col-md-10 col">
                 <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left"> Sign up for Account </h3>
@@ -78,32 +81,38 @@
         </div>
         <div class="row justify-content-center round">
             <div class="col-lg-10 col-md-12 ">
-                <div class="card shadow-lg card-1">
+                <div class="card shadow-lg card-1" style="margin-left: -15%;">
                     <div class="card-body inner-card">
                         <div class="alert alert-danger" role="alert" [hidden]="!error" style="text-align: center;width: 50%;
                         height: 10%;
                         margin: 3% 24% 0% 24%;
                         color: darkred;
                         font-size: 80%;">
-                           Service Error, Please try after sometime!
+                           {{errorMessage}}
                           </div>
+                          <div class="alert alert-success" role="alert" [hidden]="!success" style="text-align: center;width: 50%;
+                          height: 10%;
+                          margin: 3% 24% 0% 24%;
+                          font-size: 80%;">
+                             {{successMsg}}
+                            </div>  
 
                         <form (ngSubmit)="createAccount()" ngNativeValidate>
                         <div class="row justify-content-center">
                             <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="form-group"><label for="first-name">First Name</label><input type="text" class="form-control" id="first-name" name="firstName" [(ngModel)]="student.studentFirstName" placeholder="Your First Name" pattern="[A-Za-z]{2,}" required> </div>
-                                <div class="form-group"> <label for="Mobile-Number">Mobile Number</label> <input type="text" class="form-control" id="Mobile-Number" name="phone" [(ngModel)]="student.studentMobile" placeholder="" pattern="[0-9]{10}" required> </div>
+                                <div class="form-group"><label for="first-name">First Name</label><input type="text" class="form-control" id="first-name" name="firstName" [(ngModel)]="student.studentFirstName" placeholder="Your First Name" pattern="[A-Za-z]{2,}" [maxLength]="15" title="Name should only contain alphabets" required> </div>
+                                <div class="form-group"> <label for="Mobile-Number">Mobile Number</label> <input type="text" class="form-control" id="Mobile-Number" name="phone" [(ngModel)]="student.studentMobile" placeholder="" pattern="[0-9]{10}" [maxLength]="10" title="Mobile should only contain numbers" required> </div>
                                 <div class="form-group"> <label for="inputEmail4">Gender</label> <select class="form-control" name="gender" [(ngModel)]="student.studentGender" required>
                                     <option value="" selected>Select Gender</option>
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                     </select> </div>
-                                <div class="form-group"> <label for="time">Username</label> <input type="text" class="form-control" id="time" placeholder="" name="username" [(ngModel)]="student.studentUsername" placeholder="Username" pattern="[A-Za-z0-9]{5,}" required> </div>
-                                <div class="form-group"><label for="skill">Age</label> <input type="text" class="form-control" id="skill" placeholder="" name="age" [(ngModel)]="student.studentAge" pattern="[0-9]{2}"required> </div>
+                                <div class="form-group"> <label for="time">Username</label> <input type="text" class="form-control" id="time" placeholder="" name="username" [(ngModel)]="student.studentUsername" placeholder="Username" pattern="[A-Za-z0-9]{5,}" [maxLength]="12" title="Username should be minimum 5 characters & no special characters allowed." required> </div>
+                                <div class="form-group"><label for="skill">Age</label> <input type="text" class="form-control" id="skill" placeholder="" name="age" [(ngModel)]="student.studentAge" pattern="[0-9]{2}" [maxLength]="2" title="Age should only contain numbers" required> </div>
                             </div>
                             <div class="col-lg-5 col-md-6 col-sm-12">
-                                <div class="form-group"> <label for="last-name">Last Name</label> <input type="text" class="form-control" id="last-name" name="lastName" [(ngModel)]="student.studentLastName" placeholder="Your Last Name" pattern="[A-Za-z]{2,}" required> </div>
-                                <div class="form-group"> <label for="phone">Email</label> <input type="email" class="form-control" id="email"  name="email" [(ngModel)]="student.studentEmail" placeholder="Your Email" required> </div>
+                                <div class="form-group"> <label for="last-name">Last Name</label> <input type="text" class="form-control" id="last-name" name="lastName" [(ngModel)]="student.studentLastName" placeholder="Your Last Name" pattern="[A-Za-z]{2,}" [maxLength]="15" title="Name should only contain alphabets" required> </div>
+                                <div class="form-group"> <label for="phone">Email</label> <input type="email" class="form-control" id="email"  name="email" [(ngModel)]="student.studentEmail" placeholder="Your Email" [maxLength]="30" required> </div>
                                 <div class="form-group"> <label for="Evaluate Budget">Standard</label> 
                                     <select class="form-control" name="std" [(ngModel)]="student.studentStandard" required>  
                                         <option value=""  selected>Select Standard</option>
@@ -112,7 +121,7 @@
                                         <option value="13">Entrance</option>
                                 </select>
                                 </div>
-                                <div class="form-group"><label for="skill">Password</label> <input type="password" class="form-control" id="skill" placeholder="Your Password" name="password" [(ngModel)]="student.studentPassword" pattern="[A-Za-z0-9]{5,}" required> </div>
+                                <div class="form-group"><label for="skill">Password</label> <input type="password" class="form-control" id="skill" placeholder="Your Password" name="password" [(ngModel)]="student.studentPassword" [maxLength]="12" required> </div>
                             </div>
                         </div>
                        
@@ -122,7 +131,7 @@
                                 <div class="mb-2 mt-4">
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-primary btn-block"><small class="font-weight-bold">Create Account</small></button>
-                                        <a href="login" class="ForgetPwd" style="margin-left: 3%;">Already have account? Login Here!</a>
+                                        <a routerLink="/login" class="ForgetPwd" style="margin-left: 3%;">Already have account? Login Here!</a>
                                     </div>
                                 </div>
                             </div>

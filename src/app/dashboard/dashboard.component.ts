@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Course } from '../model/course';
+import { CourseDetails } from '../model/courseDetails';
 import { Student } from '../model/student';
 import { DashboardService } from '../service/DashboardService';
 import { StateService } from '../service/StateService';
@@ -44,8 +45,12 @@ export class DashboardComponent implements OnInit {
 
     this.courseList = this.dashboardService.getAllCourses(obj);
     this.showLoader = false;
+
+    console.log("******",this.courseList);
     
   }
+
+  
 
   buyCourse(event){
     console.log("Buy course "+event);
@@ -57,13 +62,15 @@ export class DashboardComponent implements OnInit {
       "studentId" : this.student.studentId,
       "courseId" : courseId
     }
-
+    
+    this.dashboardService.getCourseDetails(obj).subscribe(data => {
+      localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)});
   
     this.dashboardService.checkPurchaseStatus(obj) .subscribe(data =>{
       console.log("Purchase status res :");
       console.log(data);
       if(data == null){
-        this.dashboardService.purchaseCourse(obj)
+        /*this.dashboardService.purchaseCourse(obj)
         .subscribe(data =>{
           console.log(data);
           if(data.length > 0){
@@ -75,7 +82,9 @@ export class DashboardComponent implements OnInit {
           console.log("***** Purchase ERROR *****");
           console.log(error);
           this.showLoader = false;  
-        }) 
+        }) */
+        
+        this.router.navigateByUrl("/order");
       }else{
         console.log("You have already purchased this product");
         this.error = true;
@@ -87,10 +96,16 @@ export class DashboardComponent implements OnInit {
       console.log(error);
       this.showLoader = false;  
     }) 
-    
-    
-   
 
+  }
+
+  showCourseDetails(event){
+    this.showLoader = true;
+    console.log(event.srcElement.id);
+    var courseId = event.srcElement.id;
+    //this.dashStateServie.notifyOther({key: 'courseId', value: courseId});
+    localStorage.setItem("courseId",courseId);
+    this.router.navigateByUrl('/details');
   }
   
 }

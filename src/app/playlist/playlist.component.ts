@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Playlist } from '../model/playlist';
 import { DashboardService } from '../service/DashboardService';
 import { StateService } from '../service/StateService';
+import { StudentService } from '../service/StudentService';
 
 @Component({
   selector: 'app-playlist',
@@ -13,7 +14,7 @@ import { StateService } from '../service/StateService';
 export class PlaylistComponent implements OnInit {
 
   constructor(private dashService : DashboardService, private router : Router,
-    private studentState : StateService) { }
+    private studentState : StateService, private studentService : StudentService) { }
 
   student = this.studentState.getStudentState();
 
@@ -28,6 +29,7 @@ export class PlaylistComponent implements OnInit {
       this.router.navigateByUrl("/login");  
     }else{
       this.getPlaylist();
+      this.getAllDoubts();
     }
     
   }
@@ -67,6 +69,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   doubtList : Array<{}> = [];
+  doubtListDB : Observable<[]>;
   question : string;
   askDoubt(){
     if(this.question != null){
@@ -77,7 +80,28 @@ export class PlaylistComponent implements OnInit {
 
       this.doubtList.push(obj);
       localStorage.setItem("doubtList",JSON.stringify(this.doubtList));
+      
+
+      var request = {
+        studentId : this.student.studentId,
+        courseId : 4,
+        doubtQuest : this.question
+      }
+
+      this.studentService.saveDoubt(request).subscribe(res => console.log("Doubt saved"));
+      this.question = "";
+      this.getAllDoubts();
     }
+  }
+
+
+  getAllDoubts(){
+    var request = {
+      studentId : this.student.studentId
+    }
+    this.studentService.fetchDoubts(request).subscribe(res => this.doubtListDB = res);
+
+    console.log(this.doubtListDB);
   }
 
 

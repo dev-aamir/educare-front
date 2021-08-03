@@ -6,7 +6,7 @@
                 <br>
                 <span><h2>{{playVideoName}}</h2> </span>
                 <hr>
-                <div>
+                <div appNoRightClick>
                   <video
                       id="my-player"
                       class="video-js"
@@ -53,18 +53,18 @@
                       <button (click)="askDoubt()" class="btn btn-primary" value="Ask Doubt" > Ask Doubt</button>
                     </form>
                     <!-- Comment with nested comments-->
-                    <div class="d-flex mb-4" *ngFor="let doubt of doubtList">
+                    <div class="d-flex mb-4" *ngFor="let doubt of doubtListDB">
                         <!-- Parent comment-->
                         <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                         <div class="ms-3">
                             <div class="fw-bold">You : </div>
-                           {{doubt.quest}}
+                           {{doubt.doubtQuest}}
                             <!-- Child comment 1-->
                             <div class="d-flex mt-4">
                                 <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
                                 <div class="ms-3">
                                     <div class="fw-bold">Teacher : </div>
-                                    {{doubt.answer}}  
+                                    {{doubt.doubtAns}}  
                                   </div>
                             </div>
                            
