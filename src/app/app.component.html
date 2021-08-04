@@ -95,6 +95,9 @@
                   <a class="nav-link" [routerLink]="['myboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Learning</a>
                 </li>
                 <li class="nav-item" *ngIf="student != null">
+                  <a class="nav-link" [routerLink]="['practicehome']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Practice Tests</a>
+                </li>
+                <li class="nav-item" *ngIf="student != null">
                   <a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Profile</a>
                 </li>
               

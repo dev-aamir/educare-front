@@ -11,6 +11,8 @@ import { MyboardComponent } from './myboard/myboard.component';
 import { OrderComponent } from './order/order.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { ProfileComponent } from './profile/profile.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizhomeComponent } from './quizhome/quizhome.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { SignupComponent } from './signup/signup.component';
 
@@ -27,9 +29,9 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'details', component: DetailsComponent },
   { path: 'order', component: OrderComponent },
-  { path: 'showcase', component: ShowcaseComponent}
-
-
+  { path: 'showcase', component: ShowcaseComponent},
+  { path: 'practice', component: QuizComponent},
+  { path: 'practicehome', component: QuizhomeComponent}
 ];
 
 @NgModule({

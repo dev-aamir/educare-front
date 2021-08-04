@@ -1,0 +1,71 @@
+<div class="row" *ngIf="computedResult == false" style="margin-top: 4%; margin-bottom: -2%">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-4">Time : {{quizService.displayTime()}} </div>
+    <div class="col-sm-4"><button class="btn btn-success" (click)="cancelExam();" style="margin-left: 78%;">Exit <i class="bi bi-box-arrow-right"></i></button></div>
+    <div class="col-sm-2"> </div>
+</div>   
+<div class="container mt-sm-5 my-1" *ngIf="computedResult == false"> 
+   <!-- <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5"><b>Question : {{quizService.questions[quizService.questNo].question}}</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <label class="options" *ngIf="quizService.questions[quizService.questNo].option1 != null">{{quizService.questions[quizService.questNo].option1}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizService.questions[quizService.questNo].option2 != null">{{quizService.questions[quizService.questNo].option2}}<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizService.questions[quizService.questNo].option3 != null">{{quizService.questions[quizService.questNo].option3}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizService.questions[quizService.questNo].option4 != null">{{quizService.questions[quizService.questNo].option4}} <input type="radio" name="radio"> <span class="checkmark"></span> </label>
+         </div>
+    </div>
+    -->
+    <div class="d-flex align-items-center pt-3" *ngIf="started==false">
+        <h4>Practice Test</h4>
+        <ul style="margin-left: 6%;">
+            <li>Kindly read the question properly before answering as questions can be submitted only once.</li>
+            <li>Do not change tab, as this will results in cancellation for test</li>
+            <li>This is time based results, kindly look for timer</li>
+
+        </ul>    
+    </div>
+    <div class="question ml-sm-5 pl-sm-5 pt-2">
+        <div class="py-2 h5" *ngIf="showQuestion"><b>Question : {{quizQuestion}}</b></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <label class="options" *ngIf="quizOption1 != null">{{quizOption1}} <input type="radio" value="1" [(ngModel)]="answerSubmitted" name="radio" [required]="true"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizOption2 != null">{{quizOption2}}<input type="radio" value="2" [(ngModel)]="answerSubmitted"  name="radio" [required]="true"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizOption3 != null">{{quizOption3}} <input type="radio" value="3" [(ngModel)]="answerSubmitted" name="radio" [required]="true"> <span class="checkmark"></span> </label> 
+            <label class="options" *ngIf="quizOption4 != null">{{quizOption4}} <input type="radio" value="4" [(ngModel)]="answerSubmitted" name="radio" [required]="true"> <span class="checkmark"></span> </label>
+         </div>
+    </div>
+    <div class="d-flex align-items-center pt-3">
+        
+        <div class="ml-auto mr-sm-5" style="margin-left: 37%;"> 
+            <button class="btn btn-success" (click)="startExam();" *ngIf="started==false">Start Exam</button> 
+            
+            <button class="btn btn-success" (click)="nextQuestion();" *ngIf="next">Next Question</button> 
+            <button class="btn btn-success" (click)="submitForResult();" *ngIf="ended">Submit Exam</button>
+        </div>
+    </div>
+</div>
+<div class="container mt-sm-5 my-1" *ngIf="computedResult == true">
+    <h4>{{quizResult.quizRemarks}}</h4>
+    <strong>Time Taken : {{quizResult.quizTimeTaken / 60 | number : "1.2-2"}} mins</strong>
+
+    <h6> Answers : </h6>
+    <div class="question ml-sm-5 pl-sm-5 pt-2" *ngFor="let quest of quizResult.quizResponse">
+        <div class="py-2 h5"><b>Question : {{quest.question}}</b> <span *ngIf="quest.answerCorrect == true" style="float: right; font-size: 15px; color:aqua">Correct</span> <span *ngIf="quest.answerCorrect == false" style="float: right; font-size: 15px; color:aqua">Incorrect</span></div>
+        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
+            <div *ngIf="quest.answerSubmitted == 1"><label class="options" *ngIf="quest.option1 != null">{{quest.option1}} <input type="radio"  [checked]="true" disabled> <span class="checkmark"></span> </label> </div>
+            <div *ngIf="quest.answerSubmitted != 1"><label class="options" *ngIf="quest.option1 != null">{{quest.option1}} <input type="radio"  disabled> <span class="checkmark"></span> </label> </div>
+            
+            <div *ngIf="quest.answerSubmitted == 2"><label class="options" *ngIf="quest.option2 != null">{{quest.option2}} <input type="radio"  [checked]="true" disabled> <span class="checkmark"></span> </label> </div>
+            <div *ngIf="quest.answerSubmitted != 2"><label class="options" *ngIf="quest.option2 != null">{{quest.option2}} <input type="radio"  disabled> <span class="checkmark"></span> </label> </div>
+            
+            <div *ngIf="quest.answerSubmitted == 3"><label class="options" *ngIf="quest.option3 != null">{{quest.option3}} <input type="radio"  [checked]="true" disabled> <span class="checkmark"></span> </label> </div>
+            <div *ngIf="quest.answerSubmitted != 3"><label class="options" *ngIf="quest.option3 != null">{{quest.option3}} <input type="radio"  disabled> <span class="checkmark"></span> </label> </div>
+            
+            <div *ngIf="quest.answerSubmitted == 4"><label class="options" *ngIf="quest.option4 != null">{{quest.option4}} <input type="radio"  [checked]="true" disabled> <span class="checkmark"></span> </label> </div>
+            <div *ngIf="quest.answerSubmitted != 4"><label class="options" *ngIf="quest.option4 != null">{{quest.option4}} <input type="radio"  disabled> <span class="checkmark"></span> </label> </div>
+            
+
+        </div>
+    </div>
+    <button class="btn btn-success" routerLink="/practicehome" style="margin-left: 45%;">Done</button>
+
+</div>

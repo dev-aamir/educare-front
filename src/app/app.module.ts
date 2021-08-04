@@ -22,6 +22,8 @@ import { OrderComponent } from './order/order.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from  'ngx-ui-loader';
+import { QuizComponent } from './quiz/quiz.component';
+import { QuizhomeComponent } from './quizhome/quizhome.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, P
     DetailsComponent,
     NoRightClickDirective,
     OrderComponent,
-    ShowcaseComponent
+    ShowcaseComponent,
+    QuizComponent,
+    QuizhomeComponent
   ],
   imports: [
     BrowserModule,

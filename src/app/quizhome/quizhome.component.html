@@ -1,0 +1,55 @@
+
+<div class="row" style="margin-top: 5%;">
+    <div class="col-12" style="margin-bottom: 3%;">
+        <div><h2 style="text-align: center;">Practice Test Available</h2></div>
+        <div class="row">
+            <div class="col-md-4 col-xl-3" *ngFor="let quiz of quizService.quizList">
+                <article class="post">
+                    <div class="article-v2">
+                        <figure class="article-thumb">
+                            
+                                <!--<img src="https://via.placeholder.com/350x280/E7E6FD/111111" alt="blog image" style="width: 100%;"/> -->
+                                <img src="/assets/exam.jpeg" alt="blog image" style="width: 100%; height: 280px;">
+                            
+                        </figure>
+                        <!-- /.article-thumb -->
+                        <div class="article-content-main" style="margin-bottom: 10%;">
+                            <div class="article-header">
+                                <h1 class="entry-title">{{quiz.quizName}}</h1>
+                                <div class="entry-meta">
+                                    <div class="entry-date">By Prof. Adams</div>
+                                    <!-- /.entry-date -->
+                                   
+                                </div>
+                                <!-- /.entry-meta -->
+                            </div>
+                            <!-- /.article-header -->
+                            <div class="article-content">
+                                <p>{{quiz.quizSubject}}</p>
+                            </div>
+                            <!--  /.article-content -->
+                            <div class="article-footer">
+                                <div class="row">
+                                    <div class="col-6 text-left footer-link">
+                                        <button (click)="goToTest(quiz.quizId)" class="btn btn-primary" style="width: 150%;">Practice</button>
+                                    </div>
+                                    
+                                </div>
+                                <!--  /.row -->
+                            </div>
+                            <!--  /.article-footer -->
+                        </div>
+                        <!--  /.article-content-main -->
+                    </div>
+                    <!--  /.article-v2 -->
+                </article>
+                <!--  /.post -->
+            </div>
+            <!--  /.col-md-6 -->
+
+            
+        </div>
+        <!--  /.blog-carousel -->
+    </div>
+    <!--  /.col-12 -->
+</div>
