@@ -13,11 +13,13 @@ export class QuizService {
   questions : any[];
   questNo : number;
   response : any[] = [];
+  totalQuests : number;
 
   quizList : any[];
   quizId : number;
 
   private baseUrl = 'http://localhost:9293/educare/quiz';
+  //private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/quiz';
 
   constructor(private http: HttpClient) { }
 

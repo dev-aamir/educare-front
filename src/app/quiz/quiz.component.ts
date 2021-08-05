@@ -48,14 +48,15 @@ export class QuizComponent implements OnInit {
     this.quizService.seconds = 0;
     this.quizService.progress = 0;
     this.quizService.questNo = 0;
+    this.quizService.totalQuests = 0;
 
     this.quizService.getQuizQuestions(request).subscribe(
       (data:any) => {
         this.quizService.questions = data;
         console.log(data);
-        //this.startTimer();
-        //this.nextQuestion();
-        //this.showFirstQuestion();
+        this.quizService.totalQuests = this.quizService.questions.length;
+        console.log("Total Questions :"+this.quizService.totalQuests);
+        
       }
     );
 
@@ -73,72 +74,73 @@ export class QuizComponent implements OnInit {
     this.startTimer();
     this.started = true;
     this.showQuestion = true;
-    this.nextQuestion();
+    //this.nextQuestion();
+    this.showFirstQuestion();
   }
   
+  showFirstQuestion(){
+    console.log("First Question");
+
+    this.answerSubmitted = null;
+    this.quizService.questNo = 1;
+        
+    this.quizQuestion = this.quizService.questions[this.quizService.questNo-1].question;
+    this.quizOption1 = this.quizService.questions[this.quizService.questNo-1].option1;
+    this.quizOption2 = this.quizService.questions[this.quizService.questNo-1].option2;
+    this.quizOption3 = this.quizService.questions[this.quizService.questNo-1].option3;
+    this.quizOption4 = this.quizService.questions[this.quizService.questNo-1].option4;
+  
+    //this.quizService.questNo++;
+
+    this.next = true;
+  }
+
+
   nextQuestion(){
     console.log(this.quizService.questNo);
     console.log(this.answerSubmitted);
 
-    this.next = true;
+    
     //this.started = true;
     //this.btnName = "Next Question";
    //console.log("Question No :"+this.quizService.questNo);
    //console.log("Exam Length :"+this.quizService.questions.length);
 
-    if(this.quizService.questNo != 0 && (this.answerSubmitted == null || this.answerSubmitted == undefined)){
+    if(this.answerSubmitted == null || this.answerSubmitted == undefined){
       console.log("Please select any one option");
     }else{
-      if(this.quizService.questNo == this.quizService.questions.length-1){
-        this.next = false;
-        this.ended = true;
-      }  
-
-      if(this.quizService.questNo == this.quizService.questions.length){
-        //console.log("In IFF");
-        
+        if(this.quizService.questNo == this.quizService.totalQuests -1){
+          this.next = false;
+          this.ended = true;
+        }  
+      
         var response = {
-          "questId": this.quizService.questions[this.quizService.questNo].questId,
+          "questId": this.quizService.questions[this.quizService.questNo-1].questId,
           "questQuizId": this.quizService.questions[0].questQuizId,
           "answerSubmitted": this.answerSubmitted,
           "studentId": this.student.studentId,
           "timeTaken": this.quizService.seconds
         }
   
+        /*if(this.quizService.questNo != 0){
+          
+        }*/
         this.quizService.response.push(response);
-  
-        this.answerSubmitted = null;
-  
-        localStorage.setItem("answers",JSON.stringify(this.quizService.response));
-  
-      }
-      else{
-        //console.log("In ELSE");
-        var response = {
-          "questId": this.quizService.questions[this.quizService.questNo].questId,
-          "questQuizId": this.quizService.questions[0].questQuizId,
-          "answerSubmitted": this.answerSubmitted,
-          "studentId": this.student.studentId,
-          "timeTaken": this.quizService.seconds
-        }
-  
-        if(this.quizService.questNo != 0){
-          this.quizService.response.push(response);
-        }
+        this.quizService.questNo = this.quizService.questNo + 1;
+
+        console.log("Respoonse List :");
+        console.log(this.quizService.response);
+        console.log("Qno :"+this.quizService.questNo);
         
   
         this.answerSubmitted = null;
         
-            this.quizQuestion = this.quizService.questions[this.quizService.questNo].question;
-            this.quizOption1 = this.quizService.questions[this.quizService.questNo].option1;
-            this.quizOption2 = this.quizService.questions[this.quizService.questNo].option2;
-            this.quizOption3 = this.quizService.questions[this.quizService.questNo].option3;
-            this.quizOption4 = this.quizService.questions[this.quizService.questNo].option4;
+        this.quizQuestion = this.quizService.questions[this.quizService.questNo-1].question;
+        this.quizOption1 = this.quizService.questions[this.quizService.questNo-1].option1;
+        this.quizOption2 = this.quizService.questions[this.quizService.questNo-1].option2;
+        this.quizOption3 = this.quizService.questions[this.quizService.questNo-1].option3;
+        this.quizOption4 = this.quizService.questions[this.quizService.questNo-1].option4;
   
-            this.quizService.questNo++;
-  
-           
-      }
     }
 
     
@@ -150,11 +152,11 @@ export class QuizComponent implements OnInit {
   submitForResult(){
 
     console.log("Last Q :"+this.quizService.questNo);
-    console.log("Length of Exam :"+this.quizService.questions.length);
-    if(this.quizService.questNo == this.quizService.questions.length){
+    console.log("Length of Exam :"+this.quizService.totalQuests);
+
+    if(this.quizService.questNo == this.quizService.totalQuests){
       console.log("In IFF of Submit");
-      console.log(this.quizService.questions[this.quizService.questNo]);
-      console.log(this.quizService.questions);
+     
       var response = {
         "questId": this.quizService.questions[this.quizService.questNo-1].questId,
         "questQuizId": this.quizService.questions[0].questQuizId,
@@ -164,6 +166,9 @@ export class QuizComponent implements OnInit {
       }
 
       this.quizService.response.push(response);
+
+      console.log("Final Respoonse List :");
+      console.log(this.quizService.response);
 
       this.answerSubmitted = null;
 
@@ -208,9 +213,13 @@ export class QuizComponent implements OnInit {
 
     this.quizService.quizId = 0;
 
+    this.quizService.response = [];
+
     clearInterval(this.quizService.timer);
 
     this.quizService.seconds = 0;
+
+    this.quizService.totalQuests = 0;
 
     this.router.navigateByUrl("practicehome");
   }
