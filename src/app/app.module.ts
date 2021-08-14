@@ -24,6 +24,8 @@ import { ShowcaseComponent } from './showcase/showcase.component';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, POSITION, PB_DIRECTION } from  'ngx-ui-loader';
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizhomeComponent } from './quizhome/quizhome.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NotesComponent } from './notes/notes.component'
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { QuizhomeComponent } from './quizhome/quizhome.component';
     OrderComponent,
     ShowcaseComponent,
     QuizComponent,
-    QuizhomeComponent
+    QuizhomeComponent,
+    NotesComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { QuizhomeComponent } from './quizhome/quizhome.component';
     HttpClientModule,
     AlertModule,
     NgxUiLoaderModule,
-    NgxUiLoaderHttpModule
+    NgxUiLoaderHttpModule,
+    NgxExtendedPdfViewerModule
   ],
   providers: [StateService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

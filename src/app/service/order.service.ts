@@ -15,8 +15,10 @@ export class OrderService {
   constructor(private http: HttpClient) {
   }
 
+
+  private baseUrl = 'https://www.dev.jvmhost.net/hayateducare-1.0/order/';
   //private baseUrl = 'http://localhost:9292/educare/order/';
-  private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/order/';
+  //private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/order/';
   createOrder(order): Observable<any> {
     return this.http.post(this.baseUrl + 'order', {
     customerName: order.name,

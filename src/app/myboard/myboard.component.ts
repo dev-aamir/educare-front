@@ -35,8 +35,17 @@ export class MyboardComponent implements OnInit {
     this.courseList = this.dashboardService.getMyLearnings(this.student);
   }
 
-  gotoPlaylist(event){
-      
+  startLearning(course){
+    console.log("start Learning");
+    localStorage.setItem("learningCourseId", JSON.stringify(course));
+    this.router.navigateByUrl("/playlist");
   }
+
+  readNotes(course){
+    console.log("start Learning");
+    localStorage.setItem("learningCourseId", JSON.stringify(course));
+    this.router.navigateByUrl("/note");
+  }
+
 
 }

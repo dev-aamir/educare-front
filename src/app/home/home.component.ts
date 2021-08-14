@@ -16,7 +16,6 @@ export class HomeComponent implements OnInit {
 
   goToShowcase(type : string){
     localStorage.setItem("type",type);
-    console.log("hit ho ke gaya");
     this.router.navigateByUrl("/showcase");
   }
 

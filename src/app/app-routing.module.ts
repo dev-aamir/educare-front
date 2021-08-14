@@ -8,6 +8,7 @@ import { DetailsComponent } from './details/details.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyboardComponent } from './myboard/myboard.component';
+import { NotesComponent } from './notes/notes.component';
 import { OrderComponent } from './order/order.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -31,7 +32,9 @@ const routes: Routes = [
   { path: 'order', component: OrderComponent },
   { path: 'showcase', component: ShowcaseComponent},
   { path: 'practice', component: QuizComponent},
-  { path: 'practicehome', component: QuizhomeComponent}
+  { path: 'practicehome', component: QuizhomeComponent},
+  { path: 'note', component: NotesComponent}
+
 ];
 
 @NgModule({

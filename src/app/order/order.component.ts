@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { NgxUiLoaderComponent } from 'ngx-ui-loader/lib/core/ngx-ui-loader.component';
 import { Student } from '../model/student';
 import { OrderService } from '../service/order.service';
 import { StateService } from '../service/StateService';
@@ -21,7 +23,8 @@ export class OrderComponent implements OnInit {
   errResponse: any;
   
      
-    constructor(private orderService: OrderService, private router : Router, private stateService : StateService) {
+    constructor(private orderService: OrderService, private router : Router, private stateService : StateService
+      , private ngxService: NgxUiLoaderService) {
  
     }
 
@@ -73,6 +76,7 @@ export class OrderComponent implements OnInit {
 
 
     onSubmit(): void {
+      this.ngxService.start();
       this.paymentId = ''; 
       this.error = ''; 
       this.orderService.createOrder(this.form).subscribe(
@@ -117,10 +121,12 @@ export class OrderComponent implements OnInit {
           this.error = err.error.message;
       }
       );
+      this.ngxService.stop();
   }
 
   @HostListener('window:payment.success', ['$event']) 
   onPaymentSuccess(event): void {
+    console.log("window pay success");
       this.orderService.updateOrder(event.detail).subscribe(
       data => {
           this.paymentId = data.message;

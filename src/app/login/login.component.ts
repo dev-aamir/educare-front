@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   student: Student = new Student();
   error : Boolean;
   errorMsg : string;
+  globalLogoutMsg : Boolean;
 
   options = {
     autoClose: true,
@@ -34,6 +35,14 @@ export class LoginComponent implements OnInit {
       this.error = true;
       this.ngxService.stop();
     }else{
+      localStorage.removeItem('student');
+      localStorage.removeItem('courseId');
+      localStorage.removeItem('courseDetails');
+      localStorage.removeItem('learningCourseId');
+      localStorage.removeItem('courseType');
+      localStorage.removeItem('type');
+      localStorage.removeItem('puchaseCourseId');
+
       this.loginServiceCall();
     }
     
@@ -52,6 +61,7 @@ export class LoginComponent implements OnInit {
           if(data.message == "LE000"){
             this.error = true;
             this.errorMsg = "Your account is already logged in !"
+            this.globalLogoutMsg = true;
             this.ngxService.stop();
           }else{
             this.studentState.setStudentState(data);
@@ -66,6 +76,7 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.error = true;
         this.errorMsg = "Server Issue, Please try again in sometime!"
+        this.globalLogoutMsg = false;
         this.ngxService.stop();
       })
   }
@@ -78,7 +89,26 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  
+  logoutFromAllDevices(){
+    
+    this.studentService.logoutFromAllDevices(this.student).subscribe(res => console.log(res));
+    
+    this.student = new Student();
+    this.studentState.setStudentState(null);
+    localStorage.removeItem('student');
+    localStorage.removeItem('courseId');
+    localStorage.removeItem('courseDetails');
+    localStorage.removeItem('learningCourseId');
+    localStorage.removeItem('courseType');
+    localStorage.removeItem('type');
+    localStorage.removeItem('puchaseCourseId');
+    
+    this.error = false;
+    this.globalLogoutMsg = false;
+
+
+    //this.router.navigate(['/login']);
+  } 
 
 
 }

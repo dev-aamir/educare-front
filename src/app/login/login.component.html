@@ -16,6 +16,7 @@
                     font-size: 90%;">
                        {{errorMsg}}
                     </div>
+                    <div *ngIf="globalLogoutMsg == true" style="margin-left: 31%; margin-top: 1%;"><button class="btn btn-danger" (click)="logoutFromAllDevices()">Logout from all devices</button></div>
                   
                       
                     <form (ngSubmit)="loginClick()" ngNativeValidate>

@@ -41,6 +41,10 @@ export class AppComponent{
     localStorage.removeItem('student');
     localStorage.removeItem('courseId');
     localStorage.removeItem('courseDetails');
+    localStorage.removeItem('learningCourseId');
+    localStorage.removeItem('courseType');
+    localStorage.removeItem('type');
+    localStorage.removeItem('puchaseCourseId');
 
 
     this.router.navigate(['/login']);

@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { CourseDetails } from '../model/courseDetails';
 import { Student } from '../model/student';
 import { DashboardService } from '../service/DashboardService';
 import { StateService } from '../service/StateService';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 
 @Component({
   selector: 'app-details',
@@ -14,11 +16,17 @@ import { StateService } from '../service/StateService';
 export class DetailsComponent implements OnInit {
 
   private subscription: Subscription;
-  
+ 
+  pdfViewActive = false;
+  pdfPath : string;
   courseDetails : Observable<CourseDetails[]>;
 
+  safeSrc: SafeResourceUrl;
+
   constructor(private dashboardService : DashboardService, private router : Router,
-    private dashStateServie : StateService) { }
+    private dashStateServie : StateService, private sanitizer: DomSanitizer) { 
+      pdfDefaultOptions.assetsFolder = '/assets';
+  }
 
   error : Boolean;
    courseId : number; 
@@ -47,19 +55,30 @@ export class DetailsComponent implements OnInit {
 
     reloadPage(){
     
-    this.courseId = Number.parseInt(localStorage.getItem("courseId"));
-     
-    console.log("course  Details of :"+this.courseId);
-    
-    var obj = {
-      "courseId" : this.courseId
-    }
+      if(localStorage.getItem("courseType") == "exa"){
+        this.pdfViewActive = true;
+      }else{
+        this.pdfViewActive = false;
+      }
 
-    this.dashboardService.getCourseDetails(obj).subscribe(data => {this.courseDetails = data; 
-      localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)});
-    console.log(this.courseDetails);
-    }
+        this.courseId = Number.parseInt(localStorage.getItem("courseId"));
+      
+        console.log("course  Details of :"+this.courseId);
+        
+        var obj = {
+          "courseId" : this.courseId
+        }
+        
+        this.dashboardService.getCourseDetails(obj).subscribe(data => {this.courseDetails = data; 
+          console.log(data);
+          //this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
+          this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
+          this.pdfPath = data[0].cdCourseChapterInfo;
+          localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)}
+          );
+        console.log(this.courseDetails);
 
+    }
 
     orderCourse(id){
       localStorage.setItem("puchaseCourseId",id);

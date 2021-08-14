@@ -103,6 +103,10 @@ export class PlaylistComponent implements OnInit {
 
     console.log(this.doubtListDB);
   }
-
+  
+  viewNotes(){
+    
+    this.router.navigateByUrl("/note");
+  }
 
 }

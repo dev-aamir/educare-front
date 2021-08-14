@@ -26,7 +26,6 @@ export class ShowcaseComponent implements OnInit {
   }
 
   showCategoryCourses(){
-    console.log("hit aaya");
     this.courseType = localStorage.getItem("type");
     var request = {
       "courseType" : this.courseType
@@ -36,11 +35,12 @@ export class ShowcaseComponent implements OnInit {
 
   }
 
-  showCourseDetails(id : number){
+  showCourseDetails(courseToView : any){
     
-    console.log(id);
+    console.log(courseToView.courseId);
     
-    localStorage.setItem("courseId",""+id);
+    localStorage.setItem("courseId",""+courseToView.courseId);
+    localStorage.setItem("courseType",courseToView.courseType);
     this.router.navigateByUrl('/details');
   }
 

@@ -19,7 +19,7 @@
         </div>
     </div>
 </section>
-<section class="py-5 bg-light">
+<section class="py-5 bg-light" *ngIf="pdfViewActive == false">
     <div class="container px-5">
         <div class="row gx-5">
             <div class="col-xl-8">
@@ -32,6 +32,36 @@
                 </div>
               
                 
+            </div>
+            <div class="col-xl-4">
+                <div class="card border-0 h-100">
+                    <div class="card-body p-4">
+                        <div class="d-flex h-100 align-items-center justify-content-center">
+                            <div class="text-center">
+                                <div class="alert alert-danger" role="alert" *ngIf="error">You have already purchased this course</div>    
+                                <div class="h6 fw-bolder">Course Duration : {{courseDetails[0].cdCourseDuration}} hours</div>
+                                <div class="h6 fw-bolder">Price : Rs {{courseDetails[0].cdCoursePrice}} </div>
+                               
+                                <div class="h6 fw-bolder">Buy This Course</div>
+                                <button class="btn btn-primary" *ngIf="student == null" routerLink="/signup">Sign up to Purchase</button>
+                                <button class="btn btn-primary" *ngIf="student != null" (click)="orderCourse(courseDetails[0].cdCourseId)">Purchase</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-5 bg-light" *ngIf="pdfViewActive == true">
+    <div class="container px-5">
+        <div class="row gx-5">
+            <div class="col-xl-8">
+                <h2 class="fw-bolder fs-5 mb-4">Syllabus PDF </h2>
+                <div id="pdfSection">
+                    <ngx-extended-pdf-viewer [src]="pdfPath" [showToolbar]="false" [enableDragAndDrop]="false" useBrowserLocale="true" height="800px"></ngx-extended-pdf-viewer>
+                </div>    
+              
             </div>
             <div class="col-xl-4">
                 <div class="card border-0 h-100">

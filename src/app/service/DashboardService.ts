@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  //private baseUrl = 'http://www.dev.jvmhost.net/hayateducare-1.0/dashboard';
-  private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/dashboard';
+  private baseUrl = 'https://www.dev.jvmhost.net/hayateducare-1.0/dashboard';
+  //private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/dashboard';
   //private baseUrl = 'http://localhost:9293/educare/dashboard';
 
   constructor(private http: HttpClient) { }
@@ -43,6 +43,10 @@ export class DashboardService {
 
   getCourseDetails(course: Object): Observable<any>{
     return this.http.post(`${this.baseUrl}/courseDetails`,course);
+  }
+
+  getAllNotesByCourse(course: Object): Observable<any>{
+    return this.http.post(`${this.baseUrl}/getNotes`,course);
   }
   
 }
