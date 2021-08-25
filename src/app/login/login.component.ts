@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
   loginServiceCall(){
     this.studentService.login(this.student)
       .subscribe(data =>{
-        console.log(data);
+        //console.log(data);
         if(data == null){
           this.error = true;
           this.errorMsg = "Invalid Credentials !"
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       },
       error =>{
         console.log("***** Login ERROR *****");
-        console.log(error);
+        //console.log(error);
         this.error = true;
         this.errorMsg = "Server Issue, Please try again in sometime!"
         this.globalLogoutMsg = false;

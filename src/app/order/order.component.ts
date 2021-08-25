@@ -31,7 +31,7 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.student = this.stateService.getStudentState();
     this.courseData = localStorage.getItem("courseDetails").split('^');
-    console.log(this.courseData);
+    //console.log(this.courseData);
     this.form = {
       amount : this.courseData[2],
       name : this.student.studentFirstName,
@@ -94,11 +94,11 @@ export class OrderComponent implements OnInit {
               
               console.log(response.error.code);    
               console.log(response.error.description);    
-              console.log(response.error.source);    
-              console.log(response.error.step);    
-              console.log(response.error.reason);    
-              console.log(response.error.metadata.order_id);    
-              console.log(response.error.metadata.payment_id);
+              //console.log(response.error.source);    
+              //console.log(response.error.step);    
+             // console.log(response.error.reason);    
+              //console.log(response.error.metadata.order_id);    
+              //console.log(response.error.metadata.payment_id);
              
               this.errResponse = {
                 code : response.error.code,    
@@ -126,7 +126,7 @@ export class OrderComponent implements OnInit {
 
   @HostListener('window:payment.success', ['$event']) 
   onPaymentSuccess(event): void {
-    console.log("window pay success");
+    //console.log("window pay success");
       this.orderService.updateOrder(event.detail).subscribe(
       data => {
           this.paymentId = data.message;
@@ -137,6 +137,8 @@ export class OrderComponent implements OnInit {
           this.error = err.error.message;
       }
       );
+
+      this.router.navigateByUrl("/myboard");
   }
 
 }

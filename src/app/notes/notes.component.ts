@@ -36,10 +36,10 @@ export class NotesComponent implements OnInit {
     }
     
     this.dashboardService.getAllNotesByCourse(obj).subscribe(data => {this.courseDetails = data; 
-      console.log(data);
+      //console.log(data);
       this.getChapterPDF(data[0]);
     });
-    console.log(this.courseDetails);
+    //console.log(this.courseDetails);
 
     
 

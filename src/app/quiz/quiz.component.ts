@@ -53,9 +53,9 @@ export class QuizComponent implements OnInit {
     this.quizService.getQuizQuestions(request).subscribe(
       (data:any) => {
         this.quizService.questions = data;
-        console.log(data);
+        //console.log(data);
         this.quizService.totalQuests = this.quizService.questions.length;
-        console.log("Total Questions :"+this.quizService.totalQuests);
+        //console.log("Total Questions :"+this.quizService.totalQuests);
         
       }
     );
@@ -79,7 +79,7 @@ export class QuizComponent implements OnInit {
   }
   
   showFirstQuestion(){
-    console.log("First Question");
+    //console.log("First Question");
 
     this.answerSubmitted = null;
     this.quizService.questNo = 1;
@@ -97,8 +97,8 @@ export class QuizComponent implements OnInit {
 
 
   nextQuestion(){
-    console.log(this.quizService.questNo);
-    console.log(this.answerSubmitted);
+    //console.log(this.quizService.questNo);
+    //console.log(this.answerSubmitted);
 
     
     //this.started = true;
@@ -128,9 +128,9 @@ export class QuizComponent implements OnInit {
         this.quizService.response.push(response);
         this.quizService.questNo = this.quizService.questNo + 1;
 
-        console.log("Respoonse List :");
-        console.log(this.quizService.response);
-        console.log("Qno :"+this.quizService.questNo);
+       // console.log("Respoonse List :");
+        //console.log(this.quizService.response);
+       // console.log("Qno :"+this.quizService.questNo);
         
   
         this.answerSubmitted = null;
@@ -151,11 +151,11 @@ export class QuizComponent implements OnInit {
 
   submitForResult(){
 
-    console.log("Last Q :"+this.quizService.questNo);
-    console.log("Length of Exam :"+this.quizService.totalQuests);
+    //console.log("Last Q :"+this.quizService.questNo);
+    //console.log("Length of Exam :"+this.quizService.totalQuests);
 
     if(this.quizService.questNo == this.quizService.totalQuests){
-      console.log("In IFF of Submit");
+      //console.log("In IFF of Submit");
      
       var response = {
         "questId": this.quizService.questions[this.quizService.questNo-1].questId,
@@ -167,8 +167,8 @@ export class QuizComponent implements OnInit {
 
       this.quizService.response.push(response);
 
-      console.log("Final Respoonse List :");
-      console.log(this.quizService.response);
+     // console.log("Final Respoonse List :");
+     // console.log(this.quizService.response);
 
       this.answerSubmitted = null;
 
@@ -177,11 +177,11 @@ export class QuizComponent implements OnInit {
     }
 
     clearInterval(this.quizService.timer);
-    console.log("Time taken : "+this.quizService.seconds);
+   // console.log("Time taken : "+this.quizService.seconds);
 
     var requestObj = JSON.parse(localStorage.getItem("answers"));
 
-    console.log(requestObj);
+   // console.log(requestObj);
 
     this.quizService.seconds = 0;
 
@@ -196,9 +196,9 @@ export class QuizComponent implements OnInit {
     
     this.quizService.getQuizResults(requestObj).subscribe(
       (data:any) => {
-        console.log("Results");
+      //  console.log("Results");
         this.quizResult = data;
-        console.log(data);
+     //   console.log(data);
       }
     );
 

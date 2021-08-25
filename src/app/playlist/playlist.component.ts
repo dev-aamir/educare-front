@@ -36,7 +36,7 @@ export class PlaylistComponent implements OnInit {
   
 
   playVideo(play : Playlist){
-    console.log("***** "+play.playlistVideoLink);
+   // console.log("***** "+play.playlistVideoLink);
     //var src = "/assets/playlist/video"+id+".mp4";
     //var poster = "/assets/playlist/videosnap"+id+".jpeg";
     
@@ -51,20 +51,22 @@ export class PlaylistComponent implements OnInit {
   }
 
   getPlaylist(){
+    //console.log(JSON.parse(localStorage.getItem("learningCourseId")));
+    var courseObj = JSON.parse(localStorage.getItem("learningCourseId"));
     var obj = {
-      "courseId" : 4
+      "courseId" : courseObj.courseId
     }
 
     this.dashService.getPlaylist(obj)
       .subscribe(data =>{
-        console.log(data);
+        //console.log(data);
         if(data.length > 0){
           this.playlist = data;
         }
       },
       error =>{
         console.log("***** Playlilst ERROR *****");
-        console.log(error);
+       // console.log(error);
       })
   }
 
@@ -101,7 +103,7 @@ export class PlaylistComponent implements OnInit {
     }
     this.studentService.fetchDoubts(request).subscribe(res => this.doubtListDB = res);
 
-    console.log(this.doubtListDB);
+   // console.log(this.doubtListDB);
   }
   
   viewNotes(){

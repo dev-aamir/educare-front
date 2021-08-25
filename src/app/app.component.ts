@@ -24,8 +24,8 @@ export class AppComponent{
   ngOnInit(): void {
     this.subscription = this.studentState.notifyObservable$.subscribe((res) => {
       if (res.hasOwnProperty('key') && res.key === 'isLoggedIn' && res.value == true) {
-        console.log("notified");
-        console.log(res.value);
+        //console.log("notified");
+        //console.log(res.value);
         this.student = this.studentState.getStudentState();
 
       }

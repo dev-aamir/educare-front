@@ -31,7 +31,7 @@ export class ContactComponent implements OnInit {
       }else{
               this.dashboardService.saveEnquiry(this.enquiry)
             .subscribe(data =>{
-              console.log(data);
+             // console.log(data);
               if(data != null){
                 this.ngxService.stop(); 
                this.success = true;
@@ -49,8 +49,8 @@ export class ContactComponent implements OnInit {
             },
             error =>{
               this.error = true;
-              console.log("***** ERROR *****");
-              console.log(error);
+              //console.log("***** ERROR *****");
+              //console.log(error);
               this.ngxService.stop();
             })
         }

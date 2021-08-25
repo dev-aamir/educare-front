@@ -31,18 +31,18 @@ export class MyboardComponent implements OnInit {
   }
 
   reloadData() {
-    console.log("****** MyBoard",this.student);
+    //console.log("****** MyBoard",this.student);
     this.courseList = this.dashboardService.getMyLearnings(this.student);
   }
 
   startLearning(course){
-    console.log("start Learning");
+    //console.log("start Learning");
     localStorage.setItem("learningCourseId", JSON.stringify(course));
     this.router.navigateByUrl("/playlist");
   }
 
   readNotes(course){
-    console.log("start Learning");
+    //console.log("start Learning");
     localStorage.setItem("learningCourseId", JSON.stringify(course));
     this.router.navigateByUrl("/note");
   }

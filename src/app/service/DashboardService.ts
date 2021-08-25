@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class DashboardService {
 
-  private baseUrl = 'https://www.dev.jvmhost.net/hayateducare-1.0/dashboard';
+  //private baseUrl = 'https://www.dev.jvmhost.net/hayateducare-1.0/dashboard';
+  private baseUrl = 'https://hayateducareapi.in/dashboard';
   //private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/dashboard';
   //private baseUrl = 'http://localhost:9293/educare/dashboard';
 

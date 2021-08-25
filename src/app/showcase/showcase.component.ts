@@ -30,14 +30,14 @@ export class ShowcaseComponent implements OnInit {
     var request = {
       "courseType" : this.courseType
     }
-    this.dashService.showCourses(request).subscribe(res => {this.courseList = res; console.log(this.courseList);});
-    console.log(this.courseList);
+    this.dashService.showCourses(request).subscribe(res => {this.courseList = res; });
+   // console.log(this.courseList);
 
   }
 
   showCourseDetails(courseToView : any){
     
-    console.log(courseToView.courseId);
+    //console.log(courseToView.courseId);
     
     localStorage.setItem("courseId",""+courseToView.courseId);
     localStorage.setItem("courseType",courseToView.courseType);

@@ -35,10 +35,10 @@ export class SignupComponent implements OnInit {
       }else{
         this.studentService.createAccount(this.student)
       .subscribe(data =>{
-        console.log(data);
+       // console.log(data);
         if(data != null){
           //this.studentState.setStudentState(data);
-          console.log(data.message);
+         // console.log(data.message);
           if(data.message == "SUE000"){
             this.error = true;
             this.errorMessage = "Email / Mobile / Username already exist";
@@ -62,7 +62,7 @@ export class SignupComponent implements OnInit {
         this.error = true;
         this.errorMessage = "Server Issue, Please try again in sometime!!";
         console.log("***** Signup ERROR *****");
-        console.log(error);
+       // console.log(error);
         this.ngxService.stop();
         
       })

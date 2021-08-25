@@ -63,20 +63,20 @@ export class DetailsComponent implements OnInit {
 
         this.courseId = Number.parseInt(localStorage.getItem("courseId"));
       
-        console.log("course  Details of :"+this.courseId);
+        //console.log("course  Details of :"+this.courseId);
         
         var obj = {
           "courseId" : this.courseId
         }
         
         this.dashboardService.getCourseDetails(obj).subscribe(data => {this.courseDetails = data; 
-          console.log(data);
+          //console.log(data);
           //this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
           this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
           this.pdfPath = data[0].cdCourseChapterInfo;
           localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)}
           );
-        console.log(this.courseDetails);
+        //console.log(this.courseDetails);
 
     }
 
@@ -88,8 +88,8 @@ export class DetailsComponent implements OnInit {
         "courseId" : id
       }
       this.dashboardService.checkPurchaseStatus(obj) .subscribe(data =>{
-        console.log("Purchase status res in details page :");
-        console.log(data);
+        //console.log("Purchase status res in details page :");
+        //console.log(data);
         if(data == null){
          
           this.router.navigateByUrl("/order");

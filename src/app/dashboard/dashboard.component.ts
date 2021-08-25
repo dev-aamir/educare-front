@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
   reloadData() {
     this.showLoader = true;
-    console.log("******",this.student);
+    //console.log("******",this.student);
    
     var obj = {
       "standardYear" : this.student.studentStandard
@@ -46,16 +46,16 @@ export class DashboardComponent implements OnInit {
     this.courseList = this.dashboardService.getAllCourses(obj);
     this.showLoader = false;
 
-    console.log("******",this.courseList);
+    //console.log("******",this.courseList);
     
   }
 
   
 
   buyCourse(event){
-    console.log("Buy course "+event);
+    //console.log("Buy course "+event);
     this.showLoader = true;
-    console.log(event.srcElement.id);
+    //console.log(event.srcElement.id);
     var courseId = event.srcElement.id;
 
     var obj = {
@@ -67,8 +67,8 @@ export class DashboardComponent implements OnInit {
       localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)});
   
     this.dashboardService.checkPurchaseStatus(obj) .subscribe(data =>{
-      console.log("Purchase status res :");
-      console.log(data);
+      //console.log("Purchase status res :");
+      //console.log(data);
       if(data == null){
         /*this.dashboardService.purchaseCourse(obj)
         .subscribe(data =>{
@@ -93,18 +93,20 @@ export class DashboardComponent implements OnInit {
     },
     error =>{
       console.log("*****  Purchase Status ERROR *****");
-      console.log(error);
+      //console.log(error);
       this.showLoader = false;  
     }) 
 
   }
 
-  showCourseDetails(event){
+  showCourseDetails(courseSelected){
     this.showLoader = true;
-    console.log(event.srcElement.id);
-    var courseId = event.srcElement.id;
+    //console.log("course selected :");
+    //console.log(courseSelected);
+    var courseId = courseSelected.courseId;
     //this.dashStateServie.notifyOther({key: 'courseId', value: courseId});
     localStorage.setItem("courseId",courseId);
+    localStorage.setItem("courseType",courseSelected.courseType);
     this.router.navigateByUrl('/details');
   }
   
