@@ -7,6 +7,7 @@ import { pdfDefaultOptions } from 'ngx-extended-pdf-viewer';
 import { Observable } from 'rxjs';
 import { CourseDetails } from '../model/courseDetails';
 import { Course } from '../model/course';
+import { QuizService } from '../service/quiz.service';
 
 @Component({
   selector: 'app-notes',
@@ -20,7 +21,7 @@ export class NotesComponent implements OnInit {
   course : Course;
 
   constructor(private dashboardService : DashboardService, private router : Router,
-    private dashStateServie : StateService, private sanitizer: DomSanitizer) { 
+    private dashStateServie : StateService, private sanitizer: DomSanitizer, private quizService : QuizService) { 
       pdfDefaultOptions.assetsFolder = '/assets';
   }
 
@@ -47,11 +48,24 @@ export class NotesComponent implements OnInit {
 
   getChapterPDF(chapterInfo){
     //console.log("get Chapter");
-    //console.log(chapterInfo);
+    console.log(chapterInfo);
 
+    localStorage.setItem("quizNumber",chapterInfo.quizNumber);
     this.pdfPath = chapterInfo.chapterNotes;
+
     //console.log(this.pdfPath);
 
+  }
+
+  
+  goToTest(){
+    var quizNumber = Number.parseInt(localStorage.getItem("quizNumber"));
+    //console.log(quizNumber);
+    if(quizNumber > 0){
+      this.quizService.quizId = quizNumber;
+      this.router.navigateByUrl("practice");
+    }
+    
   }
 
 }

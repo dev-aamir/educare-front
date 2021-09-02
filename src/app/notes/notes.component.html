@@ -9,16 +9,21 @@
                    <!-- {{courseDetails[0].cdCourseInfo}} -->
                    {{course.courseDesc}}
                 </p>
+                <br>
+                <button class="btn btn-primary" (click)="goToTest()"> Take Practice Test For This Chapter </button>
             </div>
+              
         </div>
-        <div class="row shadow p-3 mb-5 bg-white rounded">
+        <div class="row shadow p-3 mb-5 bg-white rounded" style="height : 800px;">
+           
             <div class="col-sm-12">
-                <ngx-extended-pdf-viewer [src]="pdfPath" [showToolbar]="false" [enableDragAndDrop]="false" useBrowserLocale="true" height="800px"></ngx-extended-pdf-viewer>
+                <ngx-extended-pdf-viewer [src]="pdfPath" [showToolbar]="false" [enableDragAndDrop]="false" useBrowserLocale="true"></ngx-extended-pdf-viewer>
             </div>
         </div>
     </div>
     <div class="col-sm-4 shadow p-3 mb-5 bg-white rounded" style="margin-left:3%; margin-top:1%; width: 20%;">
-       <ul *ngFor="let course of courseDetails " >
+       <strong>Chapter wise Notes : </strong>
+        <ul *ngFor="let course of courseDetails " >
            <!--<li><button class="btn btn-primary" (click)="getChapterPDF(course)" > {{course.chapterName}} </button></li> -->
             <li><a [routerLink]="" (click)="getChapterPDF(course)">{{course.chapterName}} </a></li>
         </ul>    
