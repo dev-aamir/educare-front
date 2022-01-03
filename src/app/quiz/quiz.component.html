@@ -5,16 +5,6 @@
     <div class="col-sm-2"> </div>
 </div>   
 <div class="container mt-sm-5 my-1" *ngIf="computedResult == false"> 
-   <!-- <div class="question ml-sm-5 pl-sm-5 pt-2">
-        <div class="py-2 h5"><b>Question : {{quizService.questions[quizService.questNo].question}}</b></div>
-        <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
-            <label class="options" *ngIf="quizService.questions[quizService.questNo].option1 != null">{{quizService.questions[quizService.questNo].option1}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> 
-            <label class="options" *ngIf="quizService.questions[quizService.questNo].option2 != null">{{quizService.questions[quizService.questNo].option2}}<input type="radio" name="radio"> <span class="checkmark"></span> </label> 
-            <label class="options" *ngIf="quizService.questions[quizService.questNo].option3 != null">{{quizService.questions[quizService.questNo].option3}} <input type="radio" name="radio"> <span class="checkmark"></span> </label> 
-            <label class="options" *ngIf="quizService.questions[quizService.questNo].option4 != null">{{quizService.questions[quizService.questNo].option4}} <input type="radio" name="radio"> <span class="checkmark"></span> </label>
-         </div>
-    </div>
-    -->
     <div class="d-flex align-items-center pt-3" *ngIf="started==false">
         <h4>Practice Test</h4>
         <ul style="margin-left: 6%;">
@@ -49,7 +39,7 @@
 
     <h6> Answers : </h6>
     <div class="question ml-sm-5 pl-sm-5 pt-2" *ngFor="let quest of quizResult.quizResponse">
-        <div class="py-2 h5"><b>Question : {{quest.question}}</b> <span *ngIf="quest.answerCorrect == true" style="float: right; font-size: 15px; color:aqua">Correct</span> <span *ngIf="quest.answerCorrect == false" style="float: right; font-size: 15px; color:aqua">Incorrect</span></div>
+        <div class="py-2 h5"><b>Question : {{quest.question}}</b> <span *ngIf="quest.answerCorrect == true" style="float: right; font-size: 15px; color:aqua">Correct</span> <span *ngIf="quest.answerCorrect == false" style="float: right; font-size: 15px; color:aqua">Incorrect : Correct Answer is {{quest.answer}}</span></div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options"> 
             <div *ngIf="quest.answerSubmitted == 1"><label class="options" *ngIf="quest.option1 != null">{{quest.option1}} <input type="radio"  [checked]="true" disabled> <span class="checkmark"></span> </label> </div>
             <div *ngIf="quest.answerSubmitted != 1"><label class="options" *ngIf="quest.option1 != null">{{quest.option1}} <input type="radio"  disabled> <span class="checkmark"></span> </label> </div>

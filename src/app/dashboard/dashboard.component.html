@@ -27,13 +27,13 @@
                                 <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
                                     <div class="d-flex align-items-end justify-content-between">
                                         <div class="d-flex align-items-center">
-                                            <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="..." />
+                                            <img class="rounded-circle me-3" src="assets/book.png" alt="..." />
                                             <div class="small">
-                                                <div class="fw-bold">Prof. Ajaj</div>
-                                                <div class="text-muted">March 12, 2021</div>
-                                                <a (click)="buyCourse($event)" class="btn btn-primary" id="{{course.courseId}}">Buy Course</a>
+                                               <!--<div class="fw-bold">Prof. Ajaj</div>
+                                                <div class="text-muted">March 12, 2021</div>-->
+                                                <a (click)="buyCourse($event)" class="btn btn-primary" id="{{course.courseId}}">Buy Course</a>&nbsp;&nbsp;&nbsp;
                                                <!-- <a  [routerLink]="['/details']" style="margin-left: 5px;">Course Details</a> -->
-                                               <a  (click)="showCourseDetails(course)" style="margin-left: 5px;" id="{{course.courseId}}">Course Details</a> 
+                                               <a  (click)="showCourseDetails(course)" class="btn btn-primary" id="{{course.courseId}}">Syllabus</a> 
                                             </div>
                                         </div>
                                     </div>

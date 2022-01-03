@@ -18,7 +18,9 @@ export class DetailsComponent implements OnInit {
   private subscription: Subscription;
  
   pdfViewActive = false;
+  imageViewActive = false;
   pdfPath : string;
+  syllabusPic : string;
   courseDetails : Observable<CourseDetails[]>;
 
   safeSrc: SafeResourceUrl;
@@ -61,6 +63,12 @@ export class DetailsComponent implements OnInit {
         this.pdfViewActive = false;
       }
 
+      if(localStorage.getItem("courseType") == "nsc"){
+        this.imageViewActive = true;
+      }else{
+        this.imageViewActive = false;
+      }
+
         this.courseId = Number.parseInt(localStorage.getItem("courseId"));
       
         //console.log("course  Details of :"+this.courseId);
@@ -74,6 +82,7 @@ export class DetailsComponent implements OnInit {
           //this.safeSrc =  this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
           this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(data[0].cdCourseChapterInfo);
           this.pdfPath = data[0].cdCourseChapterInfo;
+          this.syllabusPic = data[0].cdCourseChapterInfo;
           localStorage.setItem("courseDetails",data[0].cdCourseId+'^'+data[0].cdCourseName+'^'+data[0].cdCoursePrice)}
           );
         //console.log(this.courseDetails);

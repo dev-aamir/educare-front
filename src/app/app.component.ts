@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxUiLoaderComponent } from 'ngx-ui-loader/lib/core/ngx-ui-loader.component';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Course } from './model/course';
 import { Student } from './model/student';
+import { DashboardService } from './service/DashboardService';
+import { MasterStateService } from './service/MasterSateService';
 import { StateService } from './service/StateService';
 import { StudentService } from './service/StudentService';
 
@@ -15,9 +18,14 @@ export class AppComponent{
   
   title = 'Educare';
   private subscription: Subscription;
+  private masterSub: Subscription;
+  adminLogin : string;
+  adminNav : boolean = false;
 
-  constructor(private router : Router,
-    private studentState : StateService, private studentService : StudentService) { }
+
+
+  constructor(public router : Router,
+    private studentState : StateService, private studentService : StudentService, private masterState : MasterStateService) { }
 
   student = this.studentState.getStudentState();
 
@@ -27,7 +35,12 @@ export class AppComponent{
         //console.log("notified");
         //console.log(res.value);
         this.student = this.studentState.getStudentState();
+      }
+    });
 
+    this.masterSub = this.masterState.notifyObservable$.subscribe((res) => {
+      if (res.hasOwnProperty('key') && res.key === 'masterLogin' && res.value == true) {
+        this.adminNav = true;
       }
     });
   } 
@@ -52,5 +65,23 @@ export class AppComponent{
 
   refreshHeader(){
     this.router.navigateByUrl('');
+  }
+
+  showCourseDetails(courseId:number, courseType:string){
+    
+    //console.log(courseToView.courseId);
+    
+    localStorage.setItem("courseId",""+courseId);
+    localStorage.setItem("courseType",courseType);
+    this.router.navigateByUrl('/details');
+  }
+
+  showNcertCourses(){
+    localStorage.setItem("type","nsc");
+    this.router.navigateByUrl("/showcase");
+  }
+
+  masterLogout(){
+    this.masterState.notifyOther({key: 'masterLogin', value: false});
   }
 }

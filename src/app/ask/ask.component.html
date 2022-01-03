@@ -1,0 +1,88 @@
+<div class="container">
+    <br><br>
+    <div class="row">
+        <br><br>
+        <div class="col-sm-3">
+               <!-- Button to Open the Modal -->
+            <button type="button" class="btn btn-primary" (click) = "openPopup()">
+                    Ask Doubt
+            </button> 
+        </div>
+        
+    </div>
+
+    <div class="row" style="height : 450px; overflow: auto;">
+        <div class="col-sm-12">
+            <div class="list-group">
+                <a href="" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let query of doubtListDB ">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{{query.doubtQuest}}</h5>
+                    <!--<small>3 days ago</small> -->
+                  </div>
+                  <p class="mb-1">Expert Answer : {{query.doubtAns}}
+                  </p>
+                  
+                </a>
+                
+              </div>
+        </div>   
+    </div>
+    <br><br>
+
+
+
+    <!-- The Modal-->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Ask your Doubt</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup] = "formdata" (ngSubmit)="on_submit(formdata.value)" class="form" enctype="multipart/form-data">
+            <div class="form-group" [ngClass]="{error:formdata.controls.Subject.errors && formdata.controls.Subject.touched}">
+                <label for="Inputuname">Select Subject <span class="required-asteric">*</span></label>
+                    <div class="input-group controls">
+                     <select formControlName = "Subject" type="text" class="form-control">
+                         <option value=""><-- Select Subject --></option>
+                         <option *ngFor="let course of courseList | async" value={{course.courseId}}>{{course.courseName}}</option>
+                         
+                    </select> 
+                     <div *ngIf="formdata.controls.Subject.errors && formdata.controls.Subject.touched" style="color:red;float: left;width: 100%;background: #ff000014;margin-top: 10px;padding: 10px 2px 0px 1px;">
+                       <ul>
+                         <li>Select Subject for Doubt</li>
+                       </ul>
+                      </div>
+                    </div>
+            </div>
+            <br>
+            <div class="form-group" [ngClass]="{error:formdata.controls.Question.errors && formdata.controls.Question.touched}">
+                <label for="Inputuname">Question <span class="required-asteric">*</span></label>
+                    <div class="input-group controls">
+                     <textarea formControlName = "Question" type="text" class="form-control"></textarea>
+                     <div *ngIf="formdata.controls.Question.errors && formdata.controls.Question.touched" style="color:red;float: left;width: 100%;background: #ff000014;margin-top: 10px;padding: 10px 2px 0px 1px;">
+                       <ul>
+                         <li>Question is required.</li>
+                       </ul>
+                      </div>
+                    </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  </div>

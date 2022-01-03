@@ -14,6 +14,7 @@ export class Student {
 	validationResponse : any;
 	sessionKey : string;
 	message : string;
+	admin : boolean;
 
 	
 }

@@ -167,8 +167,8 @@ export class QuizComponent implements OnInit {
 
       this.quizService.response.push(response);
 
-     // console.log("Final Respoonse List :");
-     // console.log(this.quizService.response);
+      console.log("Final Respoonse List :");
+      console.log(this.quizService.response);
 
       this.answerSubmitted = null;
 
@@ -198,7 +198,7 @@ export class QuizComponent implements OnInit {
       (data:any) => {
       //  console.log("Results");
         this.quizResult = data;
-     //   console.log(data);
+        console.log(data);
       }
     );
 

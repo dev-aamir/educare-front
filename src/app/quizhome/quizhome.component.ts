@@ -25,9 +25,9 @@ export class QuizhomeComponent implements OnInit {
     }
 
     var request = {
-      "studentStandard" : this.student.studentStandard
+      "message" : localStorage.getItem("testSub")
     };
-
+    console.log(request);
     this.quizService.getQuizList(request).subscribe(
       (data:any) => {
         this.quizService.quizList = data;

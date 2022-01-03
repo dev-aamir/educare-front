@@ -25,7 +25,14 @@ import { NgxUiLoaderModule, NgxUiLoaderHttpModule, NgxUiLoaderConfig, SPINNER, P
 import { QuizComponent } from './quiz/quiz.component';
 import { QuizhomeComponent } from './quizhome/quizhome.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-import { NotesComponent } from './notes/notes.component'
+import { NotesComponent } from './notes/notes.component';
+import { AskComponent } from './ask/ask.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminloginComponent } from './adminlogin/adminlogin.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { AdminDoubtsComponent } from './admin-doubts/admin-doubts.component';
+import { QuizDashComponent } from './quiz-dash/quiz-dash.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,12 @@ import { NotesComponent } from './notes/notes.component'
     ShowcaseComponent,
     QuizComponent,
     QuizhomeComponent,
-    NotesComponent
+    NotesComponent,
+    AskComponent,
+    AdminloginComponent,
+    AdminDashboardComponent,
+    AdminDoubtsComponent,
+    QuizDashComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +67,9 @@ import { NotesComponent } from './notes/notes.component'
     AlertModule,
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule,
-    NgxExtendedPdfViewerModule
+    NgxExtendedPdfViewerModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [StateService,{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]

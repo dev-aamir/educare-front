@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit(): void {
+    localStorage.setItem("adminLogin","false");
   }
 
   goToShowcase(type : string){

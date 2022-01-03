@@ -1,0 +1,83 @@
+<div class="container">
+<table class="table table-stripped" style="height:100px; overflow-y:scroll;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Student Name</th>
+        <th scope="col">Doubt Subject</th>
+        <th scope="col">Doubt</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doubt of doubtListDB">
+        <th scope="row" *ngIf="doubt.doubtAns == null">{{doubt.stuFname}}</th>
+        <td *ngIf="doubt.doubtAns == null">{{doubt.cname}}</td>
+        <td *ngIf="doubt.doubtAns == null">{{doubt.doubtQuest}}</td>
+        <td *ngIf="doubt.doubtAns == null"><button class="btn btn-primary" (click)="openAnswerModal(doubt)">Answer This</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <!-- The Modal-->
+  <div class="modal" id="answerModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Ask your Doubt</h4>
+          <button type="button" class="close" (click)="closeModal()">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <form [formGroup] = "formdata" (ngSubmit)="submitAnswer(formdata.value)" class="form">
+            <div class="form-group">
+                <label for="inpstu">Student Name </label>
+                    <div class="input-group controls">
+                     <input formControlName = "stuFname" type="text" class="form-control" readonly="true"/>
+                    </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="inpsub">Subject Name </label>
+                    <div class="input-group controls">
+                     <input formControlName = "cname" type="text" class="form-control" readonly="true"/>
+                    </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="inpque">Question</label>
+                    <div class="input-group controls">
+                     <textarea formControlName = "doubtQuest" type="text" class="form-control" readonly="true"></textarea>
+                    </div>
+            </div>
+            <br>
+            <div class="form-group" [ngClass]="{error:formdata.controls.doubtAns.errors && formdata.controls.doubtAns.touched}">
+                <label for="inpans">Answer <span class="required-asteric">*</span></label>
+                    <div class="input-group controls">
+                     <textarea formControlName = "doubtAns" type="text" class="form-control"></textarea>
+                     <div *ngIf="formdata.controls.doubtAns.errors && formdata.controls.doubtAns.touched" style="color:red;float: left;width: 100%;background: #ff000014;margin-top: 10px;padding: 10px 2px 0px 1px;">
+                       <ul>
+                         <li>Answer is required.</li>
+                       </ul>
+                      </div>
+                    </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="closeModal()">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!--Modal END-->
+
+</div>  

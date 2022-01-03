@@ -50,6 +50,8 @@
   </div>
 </nav>
 -->
+
+
 <main class="flex-shrink-0">
   <!-- Navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -79,7 +81,52 @@
                 <li class="nav-item" *ngIf="student == null">
                   <a class="nav-link"  [routerLink]="['']" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact: true}">Home </a>
                 </li>
-                <li class="nav-item" *ngIf="student == null">
+                
+                <li class="nav-item dropdown" *ngIf="student == null">
+                  <a href="#" class="nav-link dropdown-toggle newDropBtn" onclick="openDropDown()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"> Courses <span class="caret"></span></a>
+                  <ul class="dropdown-menu" id="newDropMenu">
+                      
+                      <li class="dropdown-submenu">
+                          <a href="#" class="dropdown-item dropdown-toggle" onfocus="openSubDropS()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Science</span><span class="caret"></span></a>
+                          <ul class="dropdown-menu" id="newSubDropS">
+                              <li><a class="dropdown-item" (click)="showCourseDetails(4,'sci')">Class XI - Physics</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(5,'sci')" >Class XI - Chemistry</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(6,'sci')" >Class XI - Biology</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(7,'sci')" >Class XI - Maths</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(8,'sci')" >Class XII - Physics</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(9,'sci')" >Class XII - Chemistry</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(10,'sci')" >Class XII - Biology</a></li>
+                              <li><a class="dropdown-item" (click)="showCourseDetails(11,'sci')" >Class XII - Maths</a></li>
+                          </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-item dropdown-toggle" onfocus="openSubDropC()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Commerce</span><span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="newSubDropC">
+                            <li><a class="dropdown-item" (click)="showCourseDetails(17,'com')">Class XI - Economics</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(16,'com')">Class XI - Business Studies</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(20,'com')">Class XI - Maths</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(21,'com')">Class XI - Accountancy</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(23,'com')">Class XII - Economics</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(22,'com')">Class XII - Business Studies</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(24,'com')">Class XII - Maths</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(25,'com')">Class XII - Accountancy</a></li>
+                            
+                        </ul>
+                      </li>
+                      <li class="dropdown-submenu">
+                        <a href="#" class="dropdown-item dropdown-toggle" onfocus="openSubDropE()" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="nav-label">Entrance</span><span class="caret"></span></a>
+                        <ul class="dropdown-menu" id="newSubDropE">
+                            <li><a class="dropdown-item" (click)="showCourseDetails(12,'exa')">JEE-Main</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(13,'exa')">JEE-Advance</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(14,'exa')">NDA</a></li>
+                            <li><a class="dropdown-item" (click)="showCourseDetails(15,'exa')">NEET</a></li>
+                            
+                        </ul>
+                      </li>
+                      <li><a class="dropdown-item" (click)="showNcertCourses()">NCERT</a></li>
+                  </ul>
+              </li>
+                <li class="nav-item" *ngIf="student == null" >
                   <a class="nav-link" [routerLink]="['contact']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Contact</a>
                 </li>
                 <li class="nav-item" *ngIf="student == null">
@@ -88,17 +135,23 @@
                 <li class="nav-item" *ngIf="student == null">
                   <a class="nav-link" [routerLink]="['signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Sign up</a>
                 </li>
-                <li class="nav-item" *ngIf="student != null">
+                <li class="nav-item" *ngIf="student != null && !student.admin">
                   <a class="nav-link" [routerLink]="['dashboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Courses</a>
                 </li>
-                <li class="nav-item" *ngIf="student != null">
+                <li class="nav-item" *ngIf="student != null && !student.admin">
                   <a class="nav-link" [routerLink]="['myboard']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Learning</a>
                 </li>
-                <li class="nav-item" *ngIf="student != null">
-                  <a class="nav-link" [routerLink]="['practicehome']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Practice Tests</a>
+                <li class="nav-item" *ngIf="student != null && !student.admin">
+                  <a class="nav-link" [routerLink]="['practiceDash']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Practice</a>
                 </li>
-                <li class="nav-item" *ngIf="student != null">
+                <li class="nav-item" *ngIf="student != null && !student.admin">
+                  <a class="nav-link" [routerLink]="['askdoubt']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">Ask Doubt</a>
+                </li>
+                <li class="nav-item" *ngIf="student != null && !student.admin">
                   <a class="nav-link" [routerLink]="['profile']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}">My Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="student != null && student.admin">
+                  <a class="nav-link"  [routerLink]="['resolveDoubts']" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact: true}">Solve Doubts</a>
                 </li>
               
                 <li class="nav-item" *ngIf="student == null">
@@ -111,6 +164,29 @@
         </div>
     </div>
 </nav>
+
+<!--
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" *ngIf="adminNav == true">
+  <div class="container px-5">
+      <a class="navbar-brand" href="#">
+        <img src="assets/hayat_logo.png" width="350" height="70" class="d-inline-block align-top" alt="">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+           
+              <li class="nav-item" >
+                <a class="nav-link"  [routerLink]="['']" [routerLinkActive]="['active']"  [routerLinkActiveOptions]="{exact: true}">Solve Doubts</a>
+              </li>
+
+              <li class="nav-item" *ngIf="false">
+                <a class="nav-link"  (click)="masterLogout()">Sign Off </a>
+              </li>
+          </ul>
+       </div>
+    </div>
+   </nav>    
+   -->   
 <router-outlet></router-outlet>
 <ngx-ui-loader fgsColor="#1d75d8"></ngx-ui-loader>
 </main>

@@ -21,7 +21,7 @@ export class NotesComponent implements OnInit {
   course : Course;
 
   constructor(private dashboardService : DashboardService, private router : Router,
-    private dashStateServie : StateService, private sanitizer: DomSanitizer, private quizService : QuizService) { 
+    private dashStateServie : StateService, private sanitizer: DomSanitizer,  private quizService : QuizService) { 
       pdfDefaultOptions.assetsFolder = '/assets';
   }
 
@@ -48,16 +48,14 @@ export class NotesComponent implements OnInit {
 
   getChapterPDF(chapterInfo){
     //console.log("get Chapter");
-    console.log(chapterInfo);
-
+    //console.log(chapterInfo);
     localStorage.setItem("quizNumber",chapterInfo.quizNumber);
     this.pdfPath = chapterInfo.chapterNotes;
-
     //console.log(this.pdfPath);
 
   }
 
-  
+
   goToTest(){
     var quizNumber = Number.parseInt(localStorage.getItem("quizNumber"));
     //console.log(quizNumber);
@@ -65,7 +63,8 @@ export class NotesComponent implements OnInit {
       this.quizService.quizId = quizNumber;
       this.router.navigateByUrl("practice");
     }
-    
+
   }
+
 
 }

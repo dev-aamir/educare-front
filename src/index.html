@@ -29,7 +29,10 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
+       
+
         <link href="/assets/css/styles.css" rel="stylesheet" />
+
         <base href="/">
     </head>
     <body class="d-flex flex-column h-100">
@@ -38,9 +41,10 @@
 <footer class="bg-dark py-4 mt-auto">
   <div class="container px-5">
       <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; HayatEducare 2021</div></div>
+          <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; HayatEducare 2018-21</div></div>
           <div class="col-auto">
-              
+               <a class="link-light small" [routerLink]="['about']">Make Payment</a>
+              <span class="text-white mx-1">&middot;</span>
               <a class="link-light small" [routerLink]="['about']">About Us</a>
               <span class="text-white mx-1">&middot;</span>
               <a class="link-light small" [routerLink]="['contact']">Contact</a>
@@ -48,6 +52,53 @@
       </div>
   </div>
 </footer>
+
+<script>
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("dropdownmenu").classList.toggle("show");
+  }
+  
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(e) {
+    if (!e.target.matches('.newDropBtn')) {
+    var myDropdown = document.getElementById("newDropMenu");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+        document.getElementById("newSubDropE").classList.remove("show");
+        document.getElementById("newSubDropS").classList.remove("show");
+        document.getElementById("newSubDropC").classList.remove("show");
+        
+      }
+    }
+  }
+
+  function openDropDown() {
+    document.getElementById("newDropMenu").classList.toggle("show");
+  }
+
+  function openSubDropS() {
+    document.getElementById("newSubDropS").classList.toggle("show");
+    document.getElementById("newSubDropC").classList.remove("show");
+    document.getElementById("newSubDropE").classList.remove("show");
+  }
+  function openSubDropC() {
+    document.getElementById("newSubDropS").classList.remove("show");
+    document.getElementById("newSubDropC").classList.toggle("show");
+    document.getElementById("newSubDropE").classList.remove("show");
+  }
+  function openSubDropE() {
+    document.getElementById("newSubDropS").classList.remove("show");
+    document.getElementById("newSubDropC").classList.remove("show");
+    document.getElementById("newSubDropE").classList.toggle("show");
+  }
+  </script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
