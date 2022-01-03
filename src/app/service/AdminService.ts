@@ -7,9 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class AdminService {
 
-  //private baseUrl = 'https://hayateducareapi.in/student';
+  private baseUrl = 'https://hayateducareapi.in/admin';
   //private baseUrl = 'https://www.dev.jvmhost.net/hayateducare-1.0/student';
-  private baseUrl = 'http://localhost:9293/educare/admin';
+  //private baseUrl = 'http://localhost:9293/educare/admin';
   //private baseUrl = 'http://103.93.16.19:33047/hayateducare-1.0/student';
 
   constructor(private http: HttpClient) { }
